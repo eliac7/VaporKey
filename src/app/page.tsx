@@ -1,7 +1,9 @@
+import { VaporKeyApp } from "@/components/vapor-key-app";
+
 export default function Home() {
   return (
-    <div>
-      <h1>Ghost Canvas</h1>
-    </div >
+    <main className="min-h-screen bg-zinc-950">
+      <VaporKeyApp />
+    </main>
   );
 }

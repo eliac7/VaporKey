@@ -8,8 +8,8 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ghost Canvas",
-  description: "Create and share temporary, secure whiteboards with instant collaboration and guaranteed data destruction.",
+  title: "VaporKey - Secure Ephemeral Credential Sharing",
+  description: "Share secrets securely with self-destructing one-time links",
 };
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${jetBrainsMono.variable} antialiased`}
       >
