@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${jetBrainsMono.variable} antialiased`}
+        className={`${jetBrainsMono.variable} antialiased noise-bg`}
         suppressHydrationWarning
       >
         <Providers>{children}</Providers>
