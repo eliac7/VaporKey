@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/app/providers";
+import Header from "@/components/header";
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -24,7 +25,10 @@ export default function RootLayout({
         className={`${jetBrainsMono.variable} antialiased noise-bg`}
         suppressHydrationWarning
       >
-        <Providers>{children}</Providers>
+        <main className="flex flex-col items-center justify-center min-h-screen bg-zinc-950">
+          <Header />
+          <Providers>{children}</Providers>
+        </main>
       </body>
     </html>
   );

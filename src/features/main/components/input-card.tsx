@@ -19,7 +19,12 @@ export function InputCard({ onSuccess }: InputCardProps) {
       });
 
       if (!res.data?.id) {
-        throw new Error("Failed to create secret");
+        const error = res.error;
+        const errorMessage =
+          typeof error?.value === "string"
+            ? error.value
+            : "Failed to create secret";
+        throw new Error(errorMessage);
       }
 
       return `${window.location.origin}/s/${res.data.id}`;
