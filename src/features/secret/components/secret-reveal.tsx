@@ -1,10 +1,11 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { client } from "@/lib/client";
 import { useRouter } from "next/navigation";
 import { RetrievalCard } from "./retrieval-card";
+import { decryptData, importKey } from "@/lib/crypto";
 
 export default function SecretReveal({ secretId }: { secretId: string }) {
   const router = useRouter();
@@ -15,30 +16,44 @@ export default function SecretReveal({ secretId }: { secretId: string }) {
 
   const [decryptedSecret, setDecryptedSecret] = useState("");
   const [language, setLanguage] = useState("text");
+  const [decryptionKey, setDecryptionKey] = useState<string | null>(null);
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        setDecryptionKey(hash as string);
+      }, 0);
+    }
+  }, []);
 
   const { mutate: fetchSecret } = useMutation({
     mutationFn: async () => {
+      if (!decryptionKey) {
+        throw new Error("Missing decryption key in URL");
+      }
+
       const { data, error } = await client.api.secret.retrieve.get({
         query: { id: secretId },
       });
 
-      if (error) {
-        const errorMessage =
-          typeof error.value === "string"
-            ? error.value
-            : "Secret not found or invalid request";
-
-        throw new Error(errorMessage);
+      if (error || !data?.encryptedData) {
+        throw new Error("Secret not found or already destroyed");
       }
 
-      if (!data || typeof data.secret !== "string") {
-        throw new Error("Invalid response from server");
-      }
+      try {
+        const key = await importKey(decryptionKey);
+        const jsonString = await decryptData(data.encryptedData, key);
 
-      return {
-        secret: data.secret,
-        language: data.language || "text",
-      };
+        const payload = JSON.parse(jsonString);
+        return {
+          secret: payload.secret,
+          language: payload.language || "text"
+        };
+      } catch (e) {
+        console.error("Decryption failed", e);
+        throw new Error("Failed to decrypt secret. Invalid key?");
+      }
     },
     onSuccess: (data) => {
       setDecryptedSecret(data.secret);
@@ -51,7 +66,7 @@ export default function SecretReveal({ secretId }: { secretId: string }) {
   });
 
   return (
-    <div className="w-full max-w-xl animate-in fade-in zoom-in-95 duration-500">
+    <div className="w-full max-w-lg animate-in fade-in zoom-in-95 duration-500">
       <RetrievalCard
         state={viewState}
         secret={decryptedSecret}

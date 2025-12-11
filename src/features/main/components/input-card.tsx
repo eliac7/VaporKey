@@ -6,6 +6,8 @@ import { Lock, Zap } from "lucide-react";
 import { useState } from "react";
 import { LanguageSelector } from "./language-selector";
 import { Turnstile } from "@marsidev/react-turnstile";
+import { encryptData, exportKey } from "@/lib/crypto";
+import { generateKey } from "@/lib/crypto";
 
 interface InputCardProps {
   onSuccess: (url: string) => void;
@@ -18,21 +20,25 @@ export function InputCard({ onSuccess }: InputCardProps) {
 
   const { mutate: encrypt, isPending: isEncrypting } = useMutation({
     mutationFn: async () => {
-      const res = await client.api.secret.create.post({
+      const payload = JSON.stringify({
         secret,
         language,
       });
 
+      const key = await generateKey();
+
+      const encryptedData = await encryptData(payload, key);
+
+      const res = await client.api.secret.create.post({
+        encryptedData,
+      });
+
       if (!res.data?.id) {
-        const error = res.error;
-        const errorMessage =
-          typeof error?.value === "string"
-            ? error.value
-            : "Failed to create secret";
-        throw new Error(errorMessage);
+        throw new Error("Failed to create secret");
       }
 
-      return `${window.location.origin}/s/${res.data.id}`;
+      const keyString = await exportKey(key);
+      return `${window.location.origin}/s/${res.data.id}#${keyString}`;
     },
     onSuccess: (url) => {
       onSuccess(url);
@@ -62,9 +68,11 @@ export function InputCard({ onSuccess }: InputCardProps) {
         <textarea
           placeholder="Paste your secret here... (API keys, passwords, private notes)"
           value={secret}
+          autoFocus
           onChange={(e) => setSecret(e.target.value)}
           className="w-full min-h-40 bg-zinc-900/50 border border-zinc-800 rounded-xl text-zinc-100 placeholder:text-zinc-600 font-mono text-sm resize-none p-4 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all"
           spellCheck={false}
+          rows={10}
         />
         <div className="flex justify-end">
           <span className="text-xs text-zinc-600">
@@ -104,7 +112,7 @@ export function InputCard({ onSuccess }: InputCardProps) {
       </button>
 
       <p className="mt-4 text-center text-xs text-zinc-600">
-        Your secret is encrypted client-side before transmission
+        End-to-End Encrypted. The server cannot read your data.
       </p>
     </div>
   );
