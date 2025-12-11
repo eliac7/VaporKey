@@ -8,7 +8,7 @@
 ![Redis](https://img.shields.io/badge/Upstash-Redis-green)
 ![Tailwind](https://img.shields.io/badge/Tailwind-v4-cyan)
 
-<img src="/og-image.jpg" alt="VaporKey" width="900" />
+<img src="/public/og-image.jpg" alt="VaporKey" width="900" />
 
 **Secure, Ephemeral, Zero-Knowledge Credential Sharing.**
 
