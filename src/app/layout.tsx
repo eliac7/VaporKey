@@ -12,8 +12,19 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
   title: "VaporKey - Secure Ephemeral Credential Sharing",
   description: "Share secrets securely with self-destructing one-time links",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  openGraph: {
+    images: [
+      {
+        url: "/og-image.jpg",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
