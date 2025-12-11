@@ -1,6 +1,6 @@
+import SecretReveal from "@/features/secret/components/secret-reveal";
 import { redis } from "@/lib/redis";
 import { notFound } from "next/navigation";
-import SecretReveal from "../../../features/secret/components/secret-reveal";
 
 export default async function SecretPage({
   params,
