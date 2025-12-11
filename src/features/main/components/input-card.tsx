@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { Lock, Zap } from "lucide-react";
 import { useState } from "react";
 import { LanguageSelector } from "./language-selector";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 interface InputCardProps {
   onSuccess: (url: string) => void;
@@ -13,6 +14,7 @@ interface InputCardProps {
 export function InputCard({ onSuccess }: InputCardProps) {
   const [secret, setSecret] = useState("");
   const [language, setLanguage] = useState("text");
+  const [isTurnstileValid, setIsTurnstileValid] = useState(false);
 
   const { mutate: encrypt, isPending: isEncrypting } = useMutation({
     mutationFn: async () => {
@@ -71,9 +73,21 @@ export function InputCard({ onSuccess }: InputCardProps) {
         </div>
       </div>
 
+      <div className="flex justify-end mt-4">
+        <Turnstile
+          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+          options={{
+            language: "en",
+            size: "flexible",
+          }}
+          onSuccess={() => setIsTurnstileValid(true)}
+          onError={() => setIsTurnstileValid(false)}
+        />
+      </div>
+
       <button
         onClick={() => encrypt()}
-        disabled={!secret.trim() || isEncrypting}
+        disabled={!secret.trim() || isEncrypting || !isTurnstileValid}
         className="w-full mt-6 bg-emerald-600 hover:bg-emerald-500 text-white font-medium h-12 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {isEncrypting ? (
