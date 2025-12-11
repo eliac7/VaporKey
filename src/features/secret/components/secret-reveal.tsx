@@ -14,6 +14,7 @@ export default function SecretReveal({ secretId }: { secretId: string }) {
   >("locked");
 
   const [decryptedSecret, setDecryptedSecret] = useState("");
+  const [language, setLanguage] = useState("text");
 
   const { mutate: fetchSecret } = useMutation({
     mutationFn: async () => {
@@ -34,21 +35,27 @@ export default function SecretReveal({ secretId }: { secretId: string }) {
         throw new Error("Invalid response from server");
       }
 
-      return data.secret;
+      return {
+        secret: data.secret,
+        language: data.language || "text",
+      };
     },
-    onSuccess: (secret) => {
-      setDecryptedSecret(secret);
+    onSuccess: (data) => {
+      setDecryptedSecret(data.secret);
+      setLanguage(data.language);
       setViewState("revealed");
     },
     onError: () => {
       setViewState("destroyed");
     },
   });
+
   return (
-    <div className="w-full max-w-lg animate-in fade-in zoom-in-95 duration-500">
+    <div className="w-full max-w-xl animate-in fade-in zoom-in-95 duration-500">
       <RetrievalCard
         state={viewState}
         secret={decryptedSecret}
+        language={language}
         onReveal={() => fetchSecret()}
         onDestroy={() => setViewState("destroyed")}
         onNewSecret={() => router.push("/")}

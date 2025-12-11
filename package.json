@@ -1,12 +1,31 @@
 {
-  "name": "ghost-canvas",
+  "name": "vaporkey",
   "version": "0.1.0",
   "private": true,
+  "description": "A secure, self-destructing credential sharing utility that enforces single-view access and auto-deletion, built with Next.js, ElysiaJS, and Redis TTL.",
+  "author": {
+    "name": "Ilias Thalassochoritis",
+    "email": "iliascodes@gmail.com",
+    "url": "https://ilias.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eliac7/vaporkey.git"
+  },
+  "homepage": "https://github.com/eliac7/vaporkey#readme",
+  "bugs": {
+    "url": "https://github.com/eliac7/vaporkey/issues"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20.x"
   },
   "dependencies": {
     "@elysiajs/eden": "^1.4.5",
@@ -30,6 +49,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.8",
+    "shiki": "^3.19.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

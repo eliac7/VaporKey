@@ -1,18 +1,13 @@
 "use client";
 
-import {
-  AlertTriangle,
-  ClipboardCopy,
-  Clock,
-  Eye,
-  Plus,
-  Skull,
-} from "lucide-react";
+import { AlertTriangle, Clock, Copy, Eye, Plus, Skull } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import { SyntaxViewer } from "./syntax-viewer";
 
 interface RetrievalCardProps {
   state: "locked" | "revealed" | "destroyed";
   secret: string;
+  language?: string;
   onReveal: () => void;
   onDestroy: () => void;
   onNewSecret: () => void;
@@ -21,6 +16,7 @@ interface RetrievalCardProps {
 export function RetrievalCard({
   state,
   secret,
+  language = "text",
   onReveal,
   onDestroy,
   onNewSecret,
@@ -28,12 +24,14 @@ export function RetrievalCard({
   const [displayText, setDisplayText] = useState("");
   const [countdown, setCountdown] = useState(30);
   const [isDecrypting, setIsDecrypting] = useState(false);
+  const [showSyntaxHighlight, setShowSyntaxHighlight] = useState(false);
 
   // "Matrix" scramble effect
   const decryptEffect = useCallback(async () => {
     if (!secret) return;
 
     setIsDecrypting(true);
+    setShowSyntaxHighlight(false);
 
     const characters =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
@@ -44,7 +42,10 @@ export function RetrievalCard({
       const progress = i / iterations;
       let scrambled = "";
 
-      for (let j = 0; j < secret.length; j++) {
+      // Only scramble the first 100 chars to avoid lag on huge code blocks
+      const lengthToScramble = Math.min(secret.length, 200);
+
+      for (let j = 0; j < lengthToScramble; j++) {
         if (Math.random() < progress) {
           scrambled += secret[j];
         } else {
@@ -52,18 +53,21 @@ export function RetrievalCard({
             characters[Math.floor(Math.random() * characters.length)];
         }
       }
+      // If secret is longer, append the rest (masked or raw)
+      if (secret.length > 200) scrambled += "...";
+
       setDisplayText(scrambled);
       await new Promise((resolve) => setTimeout(resolve, delay));
     }
 
     setDisplayText(secret);
     setIsDecrypting(false);
+
+    setShowSyntaxHighlight(true);
   }, [secret]);
 
   useEffect(() => {
     if (state === "revealed" && secret) {
-      // We use a timeout to decouple the render from the state update.
-      // This satisfies the linter and prevents cascading renders.
       const timer = setTimeout(() => {
         decryptEffect();
       }, 0);
@@ -78,7 +82,6 @@ export function RetrievalCard({
         setCountdown((prev) => {
           if (prev <= 1) {
             clearInterval(timer);
-            onDestroy();
             return 0;
           }
           return prev - 1;
@@ -87,6 +90,12 @@ export function RetrievalCard({
       return () => clearInterval(timer);
     }
   }, [state, isDecrypting, onDestroy]);
+
+  useEffect(() => {
+    if (state === "revealed" && countdown === 0 && !isDecrypting) {
+      onDestroy();
+    }
+  }, [state, countdown, isDecrypting, onDestroy]);
 
   if (state === "locked") {
     return (
@@ -98,7 +107,6 @@ export function RetrievalCard({
           <h2 className="text-lg font-medium text-zinc-100">Secure Message</h2>
         </div>
 
-        {/* Blurred Preview */}
         <div className="relative bg-zinc-950/50 rounded-xl p-6 border border-zinc-800 overflow-hidden">
           <div className="blur-lg select-none pointer-events-none font-mono text-sm text-zinc-600 break-all">
             Xj9#mK2$pL5@nR8&qS3*vW6%yZ9!bC4^fH7(jK0)mN3#pQ6$sT9@vW2&yZ5*bC8^fH1(jK4)mN7#pQ0$sT3@vW6&yZ9!bC2^fH5(jK8)
@@ -151,22 +159,38 @@ export function RetrievalCard({
           </div>
         </div>
 
-        <div className="bg-zinc-950/50 rounded-xl p-6 border border-zinc-800 relative overflow-hidden group">
-          <pre
-            className={`font-mono text-base sm:text-lg whitespace-pre-wrap break-all leading-relaxed transition-colors duration-300 ${
-              isDecrypting ? "text-emerald-500/70" : "text-emerald-400"
-            }`}
-          >
-            {displayText}
-          </pre>
+        <div className="bg-zinc-950/50 rounded-xl p-4 border border-zinc-800 relative overflow-hidden group min-h-[100px]">
+          {language !== "text" && (
+            <div className="absolute top-0 right-0 px-3 py-1 bg-zinc-900 border-b border-l border-zinc-800 rounded-bl-xl text-[10px] uppercase tracking-wider text-zinc-500 font-bold z-10">
+              {language}
+            </div>
+          )}
 
-          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div
+            className={`font-mono text-sm transition-opacity duration-500 ${isDecrypting ? "opacity-100" : "opacity-0 absolute inset-0 p-4"
+              }`}
+          >
+            <span className="text-emerald-500/70 whitespace-pre-wrap break-all">
+              {displayText}
+            </span>
+          </div>
+
+          <div
+            className={`transition-opacity duration-500 ${!isDecrypting && showSyntaxHighlight ? "opacity-100" : "opacity-0"
+              }`}
+          >
+            {showSyntaxHighlight && (
+              <SyntaxViewer code={secret} language={language} />
+            )}
+          </div>
+
+          <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity z-20">
             <button
               onClick={() => navigator.clipboard.writeText(secret)}
-              className="p-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white rounded-lg transition-colors"
+              className="p-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white rounded-lg transition-colors border border-zinc-700"
               title="Copy to clipboard"
             >
-              <ClipboardCopy className="w-4 h-4 " />
+              <Copy className="w-4 h-4" />
             </button>
           </div>
         </div>

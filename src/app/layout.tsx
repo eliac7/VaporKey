@@ -3,6 +3,7 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/app/providers";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
         <main className="flex flex-col items-center justify-center min-h-screen bg-zinc-950">
           <Header />
           <Providers>{children}</Providers>
+          <Footer />
         </main>
       </body>
     </html>

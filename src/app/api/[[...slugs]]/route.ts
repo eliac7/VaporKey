@@ -2,20 +2,29 @@ import { redis } from "@/lib/redis";
 import { Elysia, t } from "elysia";
 import { nanoid } from "nanoid";
 
+const SECRET_TTL_SECONDS = 86400;
+
 const secretRoutes = new Elysia({ prefix: "/secret" })
   .get(
     "/retrieve",
     async ({ query, set }) => {
       const { id } = query;
 
-      const secret = await redis.getdel(`secret:${id}`);
+      const data = await redis.getdel(`secret:${id}`);
 
-      if (!secret) {
+      if (!data) {
         set.status = 404;
         return { error: "Secret not found or already destroyed" };
       }
 
-      return { secret };
+      let secret = "";
+      let language = "text";
+
+      const typedData = data as { secret: string; language?: string };
+      secret = typedData.secret;
+      language = typedData.language ?? "text";
+
+      return { secret, language };
     },
     {
       query: t.Object({
@@ -28,13 +37,20 @@ const secretRoutes = new Elysia({ prefix: "/secret" })
     async ({ body }) => {
       //Generate short id
       const id = nanoid(10);
-      await redis.set(`secret:${id}`, body.secret, { ex: 86400 });
+
+      const payload = JSON.stringify({
+        secret: body.secret,
+        language: body.language || "text",
+      });
+
+      await redis.set(`secret:${id}`, payload, { ex: SECRET_TTL_SECONDS });
 
       return { id };
     },
     {
       body: t.Object({
         secret: t.String(),
+        language: t.Optional(t.String()),
       }),
     }
   );
