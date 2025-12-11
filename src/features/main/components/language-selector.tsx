@@ -30,7 +30,7 @@ export function LanguageSelector({
   return (
     <div className="relative group">
       <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
-        <Code2 className="w-4 h-4 text-zinc-500 group-hover:text-emerald-500 transition-colors" />
+        <Code2 className="w-4 h-4 text-zinc-600 dark:text-zinc-500 group-hover:text-emerald-500 transition-colors" />
       </div>
 
       <select
@@ -41,7 +41,7 @@ export function LanguageSelector({
         onClick={() => setIsOpen(true)}
         disabled={disabled}
         name="language-selector"
-        className="appearance-none w-fit bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 text-zinc-300 text-sm rounded-xl pl-10 pr-10 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all cursor-pointer disabled:opacity-50"
+        className="appearance-none w-fit bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-700 text-zinc-900 dark:text-zinc-300 text-sm rounded-xl pl-10 pr-10 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all cursor-pointer disabled:opacity-50"
       >
         {SUPPORTED_LANGUAGES.map((lang) => (
           <option key={lang.id} value={lang.id}>
@@ -51,10 +51,10 @@ export function LanguageSelector({
       </select>
 
       <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-        {isOpen ? (
+        {!isOpen ? (
           <ChevronDown className="w-4 h-4 text-emerald-500" />
         ) : (
-          <ChevronUp className="w-4 h-4 text-zinc-500" />
+          <ChevronUp className="w-4 h-4 text-zinc-600 dark:text-zinc-500" />
         )}
       </div>
     </div>

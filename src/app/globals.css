@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
@@ -49,5 +50,16 @@ body {
 .glass-card {
   background: rgba(24, 24, 27, 0.7);
   backdrop-filter: blur(16px);
+  border: 1px solid rgba(63, 63, 70, 0.5);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .glass-card {
+  background: rgba(24, 24, 27, 0.7);
   border: 1px solid rgba(63, 63, 70, 0.5);
 }

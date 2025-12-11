@@ -50,7 +50,7 @@ export function InputCard({ onSuccess }: InputCardProps) {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
           <Lock className="w-5 h-5 text-emerald-500" />
-          <h2 className="text-lg font-medium text-zinc-100">
+          <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
             Create Secure Link
           </h2>
         </div>
@@ -70,12 +70,12 @@ export function InputCard({ onSuccess }: InputCardProps) {
           value={secret}
           autoFocus
           onChange={(e) => setSecret(e.target.value)}
-          className="w-full min-h-40 bg-zinc-900/50 border border-zinc-800 rounded-xl text-zinc-100 placeholder:text-zinc-600 font-mono text-sm resize-none p-4 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all"
+          className="w-full min-h-40 bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 rounded-xl text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 font-mono text-sm resize-none p-4 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all"
           spellCheck={false}
           rows={10}
         />
         <div className="flex justify-end">
-          <span className="text-xs text-zinc-600">
+          <span className="text-xs text-zinc-500 dark:text-zinc-600">
             {secret.length} characters
           </span>
         </div>
@@ -96,7 +96,7 @@ export function InputCard({ onSuccess }: InputCardProps) {
       <button
         onClick={() => encrypt()}
         disabled={!secret.trim() || isEncrypting || !isTurnstileValid}
-        className="w-full mt-6 bg-emerald-600 hover:bg-emerald-500 text-white font-medium h-12 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full mt-6 bg-emerald-600 hover:bg-emerald-500 text-white dak font-medium h-12 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {isEncrypting ? (
           <>
@@ -111,7 +111,7 @@ export function InputCard({ onSuccess }: InputCardProps) {
         )}
       </button>
 
-      <p className="mt-4 text-center text-xs text-zinc-600">
+      <p className="mt-4 text-center text-xs text-zinc-500 dark:text-zinc-600">
         End-to-End Encrypted. The server cannot read your data.
       </p>
     </div>

@@ -7,11 +7,12 @@ export default function Header() {
         <KeyRound className="w-8 h-8 text-emerald-500" />
       </div>
       <div>
-        <h1 className="text-2xl font-semibold text-zinc-100 tracking-tight">
+        <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight">
           VaporKey
         </h1>
-        <p className="text-sm text-zinc-500">Ephemeral credential sharing</p>
+        <p className="text-sm text-zinc-600 dark:text-zinc-500">Ephemeral credential sharing</p>
       </div>
+
     </div>
   );
 }
