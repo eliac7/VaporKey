@@ -69,7 +69,7 @@ VaporKey uses a **Client-Side Encryption** model with two distinct security mode
 - **Internationalization:** Full support for 9 languages (English, Greek, Spanish, French, German, Chinese, Japanese, Portuguese, Arabic) with RTL support.
 - **Syntax Highlighting:** Automatic highlighting for JSON, TypeScript, Python, SQL, and more via `Shiki`.
 - **Bot Protection:** Integrated Cloudflare Turnstile CAPTCHA.
-- **QR Code Generation:** Instantly generate QR codes for mobile sharing.
+- **QR Code Sharing:** Generate, download, and share QR codes with native Web Share API support for seamless mobile sharing.
 - **Modern UI:** Glassmorphism design, "Matrix" reveal effects, and dark/light mode support.
 
 ## ⚡ Tech Stack
@@ -154,6 +154,11 @@ src/
 │   └── language-selector.tsx  # Language switcher
 ├── features/
 │   ├── main/                  # Homepage (Input/Encryption logic)
+│   │   └── components/
+│   │       ├── input-card.tsx        # Secret input form
+│   │       ├── result-card.tsx       # Link display card
+│   │       ├── qr-code-section.tsx   # QR code generation & sharing
+│   │       └── ...
 │   └── secret/                # Reveal page (Decryption/Display logic)
 ├── i18n/
 │   ├── request.ts             # Server-side i18n configuration
