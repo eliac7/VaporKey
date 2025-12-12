@@ -71,7 +71,7 @@ export default async function LocaleLayout({
                                 <LanguageSelector />
                                 <ThemeToggle />
                             </div>
-                            <main className="flex-1 flex flex-col items-center justify-center px-4 py-20 sm:py-8">
+                            <main className="flex-1 flex flex-col items-center justify-center px-4 md:py-20 pt-20 pb-0 mdsm:py-8">
                                 <Header />
                                 {children}
                             </main>

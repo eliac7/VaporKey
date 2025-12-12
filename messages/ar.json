@@ -42,6 +42,8 @@
     "copied": "تم النسخ!",
     "qrCode": "رمز QR",
     "hideQR": "إخفاء QR",
+    "downloadQR": "تنزيل رمز QR",
+    "shareQR": "مشاركة رمز QR",
     "createAnother": "إنشاء سر آخر"
   },
   "retrievalCard": {

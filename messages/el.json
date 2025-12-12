@@ -42,6 +42,8 @@
     "copied": "Αντιγράφηκε!",
     "qrCode": "Κωδικός QR",
     "hideQR": "Απόκρυψη QR",
+    "downloadQR": "Λήψη Κωδικού QR",
+    "shareQR": "Κοινοποίηση Κωδικού QR",
     "createAnother": "Δημιουργία άλλου μυστικού"
   },
   "retrievalCard": {

@@ -1,9 +1,9 @@
 "use client";
 
-import { Check, Copy, Link, Plus, QrCode } from "lucide-react";
-import { QRCodeSVG } from "qrcode.react";
+import { Check, Copy, Link, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { QRCodeSection } from "./qr-code-section";
 
 interface ResultCardProps {
   url: string;
@@ -13,7 +13,6 @@ interface ResultCardProps {
 export function ResultCard({ url, onReset }: ResultCardProps) {
   const t = useTranslations("resultCard");
   const [copied, setCopied] = useState(false);
-  const [showQR, setShowQR] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -50,7 +49,7 @@ export function ResultCard({ url, onReset }: ResultCardProps) {
             {t("oneTimeLink")}
           </span>
         </div>
-        <div className="font-mono text-sm text-emerald-600 dark:text-emerald-400 break-all pr-8">
+        <div className="font-mono text-sm text-emerald-600 dark:text-emerald-400 break-all">
           {url}
         </div>
       </div>
@@ -75,27 +74,7 @@ export function ResultCard({ url, onReset }: ResultCardProps) {
         )}
       </button>
 
-      <div className="gap-3 mt-3">
-        <button
-          onClick={() => setShowQR(!showQR)}
-          className={`h-10 w-full rounded-xl text-sm font-medium transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer border ${showQR
-            ? "bg-zinc-200 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100"
-            : "bg-transparent border-zinc-300 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/50"
-            }`}
-        >
-          <QrCode className="w-4 h-4" />
-          {showQR ? t("hideQR") : t("qrCode")}
-        </button>
-      </div>
-
-      <div
-        className={`overflow-hidden transition-all duration-500 ease-in-out ${showQR ? "max-h-64 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"
-          }`}
-      >
-        <div className="flex justify-center p-4 bg-white rounded-xl">
-          <QRCodeSVG value={url} size={180} />
-        </div>
-      </div>
+      <QRCodeSection url={url} />
 
       <div className="mt-6 pt-6 border-t border-zinc-300 dark:border-zinc-800/50">
         <button

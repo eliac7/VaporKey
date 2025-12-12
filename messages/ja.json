@@ -42,6 +42,8 @@
     "copied": "コピーしました！",
     "qrCode": "QRコード",
     "hideQR": "QRを非表示",
+    "downloadQR": "QRコードをダウンロード",
+    "shareQR": "QRコードを共有",
     "createAnother": "別の秘密を作成"
   },
   "retrievalCard": {

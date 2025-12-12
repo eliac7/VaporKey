@@ -42,6 +42,8 @@
     "copied": "Kopiert!",
     "qrCode": "QR-Code",
     "hideQR": "QR Ausblenden",
+    "downloadQR": "QR-Code Herunterladen",
+    "shareQR": "QR-Code Teilen",
     "createAnother": "Weiteres Geheimnis erstellen"
   },
   "retrievalCard": {
