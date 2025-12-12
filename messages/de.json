@@ -33,7 +33,20 @@
     "encryptButton": "Verschlüsseln und Link Erstellen",
     "encrypting": "Verschlüsselt...",
     "privacyNote": "Ende-zu-Ende-Verschlüsselung. Der Server kann Ihre Daten nicht lesen.",
-    "languageLabel": "Sprache"
+    "languageLabel": "Sprache",
+    "viewLimitLabel": "Ansichtslimit",
+    "viewLimitOption1": "1 Ansicht (Sofortige Zerstörung)",
+    "viewLimitOption3": "3 Ansichten",
+    "viewLimitOption5": "5 Ansichten",
+    "viewLimitOption10": "10 Ansichten",
+    "uniqueIpLabel": "Nur eindeutige IPs",
+    "uniqueIpHint": "Nur eine Ansicht pro eindeutiger IP-Adresse.",
+    "timeLimitLabel": "Zeitlimit",
+    "timeLimitOption24": "24 Stunden",
+    "timeLimitOption48": "48 Stunden",
+    "timeLimitOption72": "72 Stunden",
+    "timeLimitOption168": "Eine Woche (168 Stunden)",
+    "timeLimitOptionNone": "Kein"
   },
   "resultCard": {
     "title": "Link Bereit",
@@ -56,7 +69,8 @@
       "copyButton": "Geheimnis Kopieren",
       "copied": "Kopiert!",
       "destroyButton": "Geheimnis Zerstören",
-      "newSecretButton": "Neues Geheimnis Erstellen"
+      "newSecretButton": "Neues Geheimnis Erstellen",
+      "viewsRemaining": "Verbleibende Ansichten: {remaining}/{limit}"
     },
     "destroyed": {
       "title": "Geheimnis Zerstört",
@@ -64,6 +78,7 @@
       "reason1": "Es wurde bereits von jemand anderem angesehen",
       "reason2": "Der Link ist abgelaufen",
       "reason3": "Es wurde manuell zerstört",
+      "reason4": "Das maximale Ansichtslimit wurde erreicht",
       "newSecretButton": "Ein Neues Geheimnis Erstellen"
     },
     "inputRequired": {
@@ -121,4 +136,3 @@
     "invalidInput": "Bitte geben Sie ein gültiges Geheimnis ein"
   }
 }
-

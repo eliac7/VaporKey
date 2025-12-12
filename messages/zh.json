@@ -33,7 +33,20 @@
     "encryptButton": "加密并创建链接",
     "encrypting": "加密中...",
     "privacyNote": "端到端加密。服务器无法读取您的数据。",
-    "languageLabel": "语言"
+    "languageLabel": "语言",
+    "viewLimitLabel": "查看次数限制",
+    "viewLimitOption1": "1 次查看 (立即销毁)",
+    "viewLimitOption3": "3 次查看",
+    "viewLimitOption5": "5 次查看",
+    "viewLimitOption10": "10 次查看",
+    "uniqueIpLabel": "仅限唯一 IP",
+    "uniqueIpHint": "每个唯一 IP 地址只允许查看一次。",
+    "timeLimitLabel": "时间限制",
+    "timeLimitOption24": "24 小时",
+    "timeLimitOption48": "48 小时",
+    "timeLimitOption72": "72 小时",
+    "timeLimitOption168": "一周 (168 小时)",
+    "timeLimitOptionNone": "无"
   },
   "resultCard": {
     "title": "链接已准备好",
@@ -56,7 +69,8 @@
       "copyButton": "复制秘密",
       "copied": "已复制！",
       "destroyButton": "销毁秘密",
-      "newSecretButton": "创建新秘密"
+      "newSecretButton": "创建新秘密",
+      "viewsRemaining": "剩余查看次数: {remaining}/{limit}"
     },
     "destroyed": {
       "title": "秘密已销毁",
@@ -64,6 +78,7 @@
       "reason1": "已被其他人查看",
       "reason2": "链接已过期",
       "reason3": "已手动销毁",
+      "reason4": "已达到最大查看次数限制",
       "newSecretButton": "创建新秘密"
     },
     "inputRequired": {
@@ -121,4 +136,3 @@
     "invalidInput": "请输入有效的秘密"
   }
 }
-

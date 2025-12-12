@@ -33,7 +33,20 @@
     "encryptButton": "تشفير وإنشاء رابط",
     "encrypting": "جاري التشفير...",
     "privacyNote": "تشفير من طرف إلى طرف. لا يمكن للخادم قراءة بياناتك.",
-    "languageLabel": "اللغة"
+    "languageLabel": "اللغة",
+    "viewLimitLabel": "حد المشاهدات",
+    "viewLimitOption1": "1 مشاهدة (تدمير فوري)",
+    "viewLimitOption3": "3 مشاهدات",
+    "viewLimitOption5": "5 مشاهدات",
+    "viewLimitOption10": "10 مشاهدات",
+    "uniqueIpLabel": "IP فريد فقط",
+    "uniqueIpHint": "مشاهدة واحدة فقط لكل عنوان IP فريد.",
+    "timeLimitLabel": "حد الوقت",
+    "timeLimitOption24": "24 ساعة",
+    "timeLimitOption48": "48 ساعة",
+    "timeLimitOption72": "72 ساعة",
+    "timeLimitOption168": "أسبوع (168 ساعة)",
+    "timeLimitOptionNone": "بلا"
   },
   "resultCard": {
     "title": "الرابط جاهز",
@@ -56,7 +69,8 @@
       "copyButton": "نسخ السر",
       "copied": "تم النسخ!",
       "destroyButton": "تدمير السر",
-      "newSecretButton": "إنشاء سر جديد"
+      "newSecretButton": "إنشاء سر جديد",
+      "viewsRemaining": "المشاهدات المتبقية: {remaining}/{limit}"
     },
     "destroyed": {
       "title": "تم تدمير السر",
@@ -64,6 +78,7 @@
       "reason1": "تم عرضه بالفعل من قبل شخص آخر",
       "reason2": "انتهت صلاحية الرابط",
       "reason3": "تم تدميره يدويًا",
+      "reason4": "تم الوصول إلى الحد الأقصى للمشاهدات",
       "newSecretButton": "إنشاء سر جديد"
     },
     "inputRequired": {

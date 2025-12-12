@@ -33,7 +33,20 @@
     "encryptButton": "Κρυπτογράφηση και Δημιουργία Συνδέσμου",
     "encrypting": "Κρυπτογράφηση...",
     "privacyNote": "Κρυπτογράφηση από άκρο σε άκρο. Ο διακομιστής δεν μπορεί να διαβάσει τα δεδομένα σας.",
-    "languageLabel": "Γλώσσα"
+    "languageLabel": "Γλώσσα",
+    "viewLimitLabel": "Όριο Προβολών",
+    "viewLimitOption1": "1 Προβολή (Άμεση Καταστροφή)",
+    "viewLimitOption3": "3 Προβολές",
+    "viewLimitOption5": "5 Προβολές",
+    "viewLimitOption10": "10 Προβολές",
+    "uniqueIpLabel": "Μόνο Μοναδικές IP",
+    "uniqueIpHint": "Μόνο μία προβολή ανά μοναδική διεύθυνση IP.",
+    "timeLimitLabel": "Χρονικό Όριο",
+    "timeLimitOption24": "24 Ώρες",
+    "timeLimitOption48": "48 Ώρες",
+    "timeLimitOption72": "72 Ώρες",
+    "timeLimitOption168": "Μία Εβδομάδα (168 Ώρες)",
+    "timeLimitOptionNone": "Κανένα"
   },
   "resultCard": {
     "title": "Σύνδεσμος Έτοιμος",
@@ -56,7 +69,8 @@
       "copyButton": "Αντιγραφή Μυστικού",
       "copied": "Αντιγράφηκε!",
       "destroyButton": "Καταστροφή Μυστικού",
-      "newSecretButton": "Δημιουργία Νέου Μυστικού"
+      "newSecretButton": "Δημιουργία Νέου Μυστικού",
+      "viewsRemaining": "Απομένουν Προβολές: {remaining}/{limit}"
     },
     "destroyed": {
       "title": "Μυστικό Καταστράφηκε",
@@ -64,6 +78,7 @@
       "reason1": "Έχει ήδη προβληθεί από κάποιον άλλο",
       "reason2": "Ο σύνδεσμος έχει λήξει",
       "reason3": "Καταστράφηκε χειροκίνητα",
+      "reason4": "Το μέγιστο όριο προβολών έχει επιτευχθεί",
       "newSecretButton": "Δημιουργία Νέου Μυστικού"
     },
     "inputRequired": {
@@ -118,6 +133,6 @@
     "networkError": "Σφάλμα δικτύου. Παρακαλώ ελέγξτε τη σύνδεσή σας.",
     "decryptionFailed": "Μη έγκυρο κλειδί ή κωδικός πρόσβασης",
     "secretNotFound": "Το μυστικό δεν βρέθηκε ή έχει ήδη καταστραφεί",
-    "invalidInput": "Παρακαλώ εισάγετε ένα έγκυρο μυστικό"
+    "invalidInput": "Παρακαλώ εισαγάγετε ένα έγκυρο μυστικό"
   }
 }

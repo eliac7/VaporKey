@@ -33,7 +33,20 @@
     "encryptButton": "Cifrar y Crear Enlace",
     "encrypting": "Cifrando...",
     "privacyNote": "Cifrado de extremo a extremo. El servidor no puede leer tus datos.",
-    "languageLabel": "Idioma"
+    "languageLabel": "Idioma",
+    "viewLimitLabel": "Límite de Vistas",
+    "viewLimitOption1": "1 Vista (Destrucción Instantánea)",
+    "viewLimitOption3": "3 Vistas",
+    "viewLimitOption5": "5 Vistas",
+    "viewLimitOption10": "10 Vistas",
+    "uniqueIpLabel": "Solo IPs Únicas",
+    "uniqueIpHint": "Solo se permite una vista por dirección IP única.",
+    "timeLimitLabel": "Límite de Tiempo",
+    "timeLimitOption24": "24 Horas",
+    "timeLimitOption48": "48 Horas",
+    "timeLimitOption72": "72 Horas",
+    "timeLimitOption168": "Una Semana (168 Horas)",
+    "timeLimitOptionNone": "Ninguno"
   },
   "resultCard": {
     "title": "Enlace Listo",
@@ -56,7 +69,8 @@
       "copyButton": "Copiar Secreto",
       "copied": "¡Copiado!",
       "destroyButton": "Destruir Secreto",
-      "newSecretButton": "Crear Nuevo Secreto"
+      "newSecretButton": "Crear Nuevo Secreto",
+      "viewsRemaining": "Vistas restantes: {remaining}/{limit}"
     },
     "destroyed": {
       "title": "Secreto Destruido",
@@ -64,6 +78,7 @@
       "reason1": "Ya fue visto por otra persona",
       "reason2": "El enlace ha expirado",
       "reason3": "Fue destruido manualmente",
+      "reason4": "Se alcanzó el límite máximo de vistas",
       "newSecretButton": "Crear un Nuevo Secreto"
     },
     "inputRequired": {

@@ -33,7 +33,20 @@
     "encryptButton": "Encrypt & Create Link",
     "encrypting": "Encrypting...",
     "privacyNote": "End-to-End Encrypted. The server cannot read your data.",
-    "languageLabel": "Language"
+    "languageLabel": "Language",
+    "viewLimitLabel": "View Limit",
+    "viewLimitOption1": "1 View (Instant Destroy)",
+    "viewLimitOption3": "3 Views",
+    "viewLimitOption5": "5 Views",
+    "viewLimitOption10": "10 Views",
+    "uniqueIpLabel": "Unique IPs Only",
+    "uniqueIpHint": "Only one view is allowed per unique IP address.",
+    "timeLimitLabel": "Time Limit",
+    "timeLimitOption24": "24 Hours",
+    "timeLimitOption48": "48 Hours",
+    "timeLimitOption72": "72 Hours",
+    "timeLimitOption168": "One Week (168 Hours)",
+    "timeLimitOptionNone": "None"
   },
   "resultCard": {
     "title": "Link Ready",
@@ -56,7 +69,8 @@
       "copyButton": "Copy Secret",
       "copied": "Copied!",
       "destroyButton": "Destroy Secret",
-      "newSecretButton": "Create New Secret"
+      "newSecretButton": "Create New Secret",
+      "viewsRemaining": "Views remaining: {remaining}/{limit}"
     },
     "destroyed": {
       "title": "Secret Destroyed",
@@ -64,6 +78,7 @@
       "reason1": "It was already viewed by someone else",
       "reason2": "The link has expired",
       "reason3": "It was manually destroyed",
+      "reason4": "Maximum view limit reached",
       "newSecretButton": "Create a New Secret"
     },
     "inputRequired": {

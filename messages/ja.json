@@ -33,7 +33,20 @@
     "encryptButton": "暗号化してリンクを作成",
     "encrypting": "暗号化中...",
     "privacyNote": "エンドツーエンド暗号化。サーバーはデータを読み取れません。",
-    "languageLabel": "言語"
+    "languageLabel": "言語",
+    "viewLimitLabel": "閲覧制限",
+    "viewLimitOption1": "1 回の閲覧（即時破壊）",
+    "viewLimitOption3": "3 回の閲覧",
+    "viewLimitOption5": "5 回の閲覧",
+    "viewLimitOption10": "10 回の閲覧",
+    "uniqueIpLabel": "一意のIPのみ",
+    "uniqueIpHint": "一意のIPアドレスごとに1回の閲覧のみが許可されます。",
+    "timeLimitLabel": "時間制限",
+    "timeLimitOption24": "24時間",
+    "timeLimitOption48": "48時間",
+    "timeLimitOption72": "72時間",
+    "timeLimitOption168": "1週間（168時間）",
+    "timeLimitOptionNone": "なし"
   },
   "resultCard": {
     "title": "リンクの準備完了",
@@ -56,7 +69,8 @@
       "copyButton": "秘密をコピー",
       "copied": "コピーしました！",
       "destroyButton": "秘密を破壊",
-      "newSecretButton": "新しい秘密を作成"
+      "newSecretButton": "新しい秘密を作成",
+      "viewsRemaining": "残り閲覧回数: {remaining}/{limit}"
     },
     "destroyed": {
       "title": "秘密が破壊されました",
@@ -64,6 +78,7 @@
       "reason1": "すでに他の誰かに閲覧されました",
       "reason2": "リンクの有効期限が切れました",
       "reason3": "手動で破壊されました",
+      "reason4": "最大閲覧制限に達しました",
       "newSecretButton": "新しい秘密を作成"
     },
     "inputRequired": {
@@ -121,4 +136,3 @@
     "invalidInput": "有効な秘密を入力してください"
   }
 }
-
