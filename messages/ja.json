@@ -18,6 +18,10 @@
     "subtitle": "ゼロ知識暗号化による安全な自己破壊型の認証情報共有",
     "getStarted": "始める"
   },
+  "metadata": {
+    "title": "VaporKey - 安全な一時的な認証情報共有",
+    "description": "自己破壊するワンタイムリンクで秘密を安全に共有"
+  },
   "inputCard": {
     "title": "安全なリンクを作成",
     "placeholder": "秘密をここに貼り付けてください...（APIキー、パスワード、プライベートノート）",

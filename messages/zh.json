@@ -18,6 +18,10 @@
     "subtitle": "使用零知识加密安全地分享自毁凭据",
     "getStarted": "开始使用"
   },
+  "metadata": {
+    "title": "VaporKey - 安全临时凭据分享",
+    "description": "使用自毁一次性链接安全分享秘密"
+  },
   "inputCard": {
     "title": "创建安全链接",
     "placeholder": "在此粘贴您的秘密...（API密钥、密码、私人笔记）",

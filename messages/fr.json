@@ -18,6 +18,10 @@
     "subtitle": "Partage sécurisé d'identifiants auto-destructeurs avec chiffrement à connaissance nulle",
     "getStarted": "Commencer"
   },
+  "metadata": {
+    "title": "VaporKey - Partage Sécurisé d'Identifiants Éphémères",
+    "description": "Partagez des secrets en toute sécurité avec des liens à usage unique auto-destructeurs"
+  },
   "inputCard": {
     "title": "Créer un Lien Sécurisé",
     "placeholder": "Collez votre secret ici... (Clés API, mots de passe, notes privées)",

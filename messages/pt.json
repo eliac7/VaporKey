@@ -18,6 +18,10 @@
     "subtitle": "Compartilhamento seguro de credenciais auto-destrutivas com criptografia de conhecimento zero",
     "getStarted": "Começar"
   },
+  "metadata": {
+    "title": "VaporKey - Compartilhamento Seguro de Credenciais Efêmeras",
+    "description": "Compartilhe segredos com segurança usando links únicos que se autodestroem"
+  },
   "inputCard": {
     "title": "Criar Link Seguro",
     "placeholder": "Cole seu segredo aqui... (Chaves API, senhas, notas privadas)",

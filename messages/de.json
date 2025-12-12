@@ -18,6 +18,10 @@
     "subtitle": "Sichere, selbstzerstörende Anmeldedatenfreigabe mit Zero-Knowledge-Verschlüsselung",
     "getStarted": "Loslegen"
   },
+  "metadata": {
+    "title": "VaporKey - Sichere Epherale Anmeldedatenfreigabe",
+    "description": "Teilen Sie Geheimnisse sicher mit selbstzerstörenden Einmal-Links"
+  },
   "inputCard": {
     "title": "Sicheren Link Erstellen",
     "placeholder": "Fügen Sie Ihr Geheimnis hier ein... (API-Schlüssel, Passwörter, private Notizen)",

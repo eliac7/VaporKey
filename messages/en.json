@@ -18,6 +18,10 @@
     "subtitle": "Secure, self-destructing credential sharing with zero-knowledge encryption",
     "getStarted": "Get Started"
   },
+  "metadata": {
+    "title": "VaporKey - Secure Ephemeral Credential Sharing",
+    "description": "Share secrets securely with self-destructing one-time links"
+  },
   "inputCard": {
     "title": "Create Secure Link",
     "placeholder": "Paste your secret here... (API keys, passwords, private notes)",

@@ -18,6 +18,10 @@
     "subtitle": "Compartir credenciales seguras y autodestructivas con cifrado de conocimiento cero",
     "getStarted": "Comenzar"
   },
+  "metadata": {
+    "title": "VaporKey - Compartir Credenciales Seguras y Efímeras",
+    "description": "Comparte secretos de forma segura con enlaces de un solo uso que se autodestruyen"
+  },
   "inputCard": {
     "title": "Crear Enlace Seguro",
     "placeholder": "Pega tu secreto aquí... (Claves API, contraseñas, notas privadas)",
@@ -117,4 +121,3 @@
     "invalidInput": "Por favor ingresa un secreto válido"
   }
 }
-
