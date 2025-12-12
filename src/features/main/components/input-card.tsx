@@ -142,12 +142,11 @@ export function InputCard({ onSuccess }: InputCardProps) {
           )}
         </div>
 
-
         <Turnstile
           siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
           options={{
             language: locale,
-            size: "flexible",
+            size: "normal",
           }}
           onSuccess={() => setIsTurnstileValid(true)}
           onError={() => setIsTurnstileValid(false)}

@@ -121,7 +121,7 @@ export function RetrievalCard({
             <div className="text-center">
               <Eye className="w-8 h-8 text-zinc-600 dark:text-zinc-500 mx-auto mb-2" />
               <p className="text-zinc-700 dark:text-zinc-400 text-sm font-medium">
-                Content is hidden
+                {t("locked.contentHidden")}
               </p>
             </div>
           </div>

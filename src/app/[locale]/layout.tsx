@@ -66,15 +66,17 @@ export default async function LocaleLayout({
             >
                 <NextIntlClientProvider messages={messages} locale={locale}>
                     <Providers>
-                        <main className="flex flex-col items-center justify-center min-h-screen bg-zinc-50 dark:bg-zinc-950">
-                            <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
+                        <div className="flex flex-col min-h-screen bg-zinc-50 dark:bg-zinc-950">
+                            <div className="absolute top-4 right-4 z-50 flex items-center gap-2 sm:top-6 sm:right-6">
                                 <LanguageSelector />
                                 <ThemeToggle />
                             </div>
-                            <Header />
-                            {children}
+                            <main className="flex-1 flex flex-col items-center justify-center px-4 py-20 sm:py-8">
+                                <Header />
+                                {children}
+                            </main>
                             <Footer />
-                        </main>
+                        </div>
                     </Providers>
                 </NextIntlClientProvider>
             </body>

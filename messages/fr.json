@@ -47,6 +47,7 @@
   "retrievalCard": {
     "locked": {
       "title": "Secret Verrouillé",
+      "contentHidden": "Le contenu est chiffré",
       "description": "Ce secret s'autodétruira après visualisation.",
       "warning": "Cette action ne peut pas être annulée",
       "revealButton": "Révéler le Secret"

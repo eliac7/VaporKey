@@ -1,17 +1,19 @@
 export default function Footer() {
   return (
-    <footer className="absolute bottom-6 left-0 right-0 flex justify-center">
-      <div className="flex items-center gap-2 px-4 py-2 text-sm text-zinc-600 dark:text-zinc-500">
-        <span className="text-zinc-500 dark:text-zinc-600">Built by</span>
-        <a
-          href="https://ilias.dev"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-zinc-700 dark:text-zinc-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
-        >
-          Ilias Thalassochoritis
-        </a>
-        <span className="text-zinc-400 dark:text-zinc-700">•</span>
+    <footer className="w-full flex justify-center py-6 mt-auto">
+      <div className="flex flex-col sm:flex-row items-center gap-2 px-4 py-2 text-sm text-zinc-600 dark:text-zinc-500">
+        <div className="flex items-center gap-2">
+          <span className="text-zinc-500 dark:text-zinc-600">Built by</span>
+          <a
+            href="https://ilias.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-zinc-700 dark:text-zinc-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
+          >
+            Ilias Thalassochoritis
+          </a>
+        </div>
+        <span className="hidden sm:inline text-zinc-400 dark:text-zinc-700">•</span>
         <a
           href="https://github.com/eliac7/vaporkey"
           target="_blank"

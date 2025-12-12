@@ -47,6 +47,7 @@
   "retrievalCard": {
     "locked": {
       "title": "Geheimnis Gesperrt",
+      "contentHidden": "Der Inhalt ist verschlüsselt",
       "description": "Dieses Geheimnis wird sich nach dem Anzeigen selbst zerstören.",
       "warning": "Diese Aktion kann nicht rückgängig gemacht werden",
       "revealButton": "Geheimnis Enthüllen"
@@ -121,4 +122,3 @@
     "invalidInput": "Bitte geben Sie ein gültiges Geheimnis ein"
   }
 }
-

@@ -47,6 +47,7 @@
   "retrievalCard": {
     "locked": {
       "title": "Secret Locked",
+      "contentHidden": "The content is encrypted",
       "description": "This secret will self-destruct after viewing.",
       "warning": "This action cannot be undone",
       "revealButton": "Reveal Secret"

@@ -47,6 +47,7 @@
   "retrievalCard": {
     "locked": {
       "title": "Segredo Bloqueado",
+      "contentHidden": "O conteúdo está criptografado",
       "description": "Este segredo se autodestruirá após a visualização.",
       "warning": "Esta ação não pode ser desfeita",
       "revealButton": "Revelar Segredo"
@@ -121,4 +122,3 @@
     "invalidInput": "Por favor, insira um segredo válido"
   }
 }
-

@@ -47,6 +47,7 @@
   "retrievalCard": {
     "locked": {
       "title": "秘密がロックされています",
+      "contentHidden": "コンテンツは暗号化されています",
       "description": "この秘密は閲覧後に自己破壊します。",
       "warning": "この操作は元に戻せません",
       "revealButton": "秘密を表示"
@@ -121,4 +122,3 @@
     "invalidInput": "有効な秘密を入力してください"
   }
 }
-

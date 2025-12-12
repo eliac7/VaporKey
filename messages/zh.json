@@ -47,6 +47,7 @@
   "retrievalCard": {
     "locked": {
       "title": "秘密已锁定",
+      "contentHidden": "内容已加密",
       "description": "此秘密在查看后将自毁。",
       "warning": "此操作无法撤消",
       "revealButton": "显示秘密"
@@ -121,4 +122,3 @@
     "invalidInput": "请输入有效的秘密"
   }
 }
-

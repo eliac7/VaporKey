@@ -16,8 +16,10 @@ export function LanguageSelector() {
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const onSelectChange = useCallback((newLocale: string) => {
+        // Preserve the hash fragment (contains decryption key for secrets)
+        const hash = typeof window !== 'undefined' ? window.location.hash : '';
         startTransition(() => {
-            router.replace(pathname, { locale: newLocale });
+            router.replace(pathname + hash, { locale: newLocale });
         });
         setIsOpen(false);
     }, [router, pathname]);

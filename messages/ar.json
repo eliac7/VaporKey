@@ -47,6 +47,7 @@
   "retrievalCard": {
     "locked": {
       "title": "السر مقفل",
+      "contentHidden": "المحتوى مخفي",
       "description": "سيتم تدمير هذا السر تلقائيًا بعد عرضه.",
       "warning": "لا يمكن التراجع عن هذا الإجراء",
       "revealButton": "الكشف عن السر"

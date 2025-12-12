@@ -47,6 +47,7 @@
   "retrievalCard": {
     "locked": {
       "title": "Secreto Bloqueado",
+      "contentHidden": "El contenido está cifrado",
       "description": "Este secreto se autodestruirá después de verlo.",
       "warning": "Esta acción no se puede deshacer",
       "revealButton": "Revelar Secreto"
