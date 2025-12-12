@@ -3,6 +3,7 @@
 import { Check, Copy, Link, Plus, QrCode } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface ResultCardProps {
   url: string;
@@ -10,6 +11,7 @@ interface ResultCardProps {
 }
 
 export function ResultCard({ url, onReset }: ResultCardProps) {
+  const t = useTranslations("resultCard");
   const [copied, setCopied] = useState(false);
   const [showQR, setShowQR] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -38,14 +40,14 @@ export function ResultCard({ url, onReset }: ResultCardProps) {
         <div className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
           <Check className="w-5 h-5 text-emerald-500" />
         </div>
-        <h2 className="text-lg font-medium dark:text-zinc-100 text-zinc-900">Link Ready</h2>
+        <h2 className="text-lg font-medium dark:text-zinc-100 text-zinc-900">{t("title")}</h2>
       </div>
 
       <div className="bg-zinc-100 dark:bg-zinc-950/50 rounded-xl p-4 border border-zinc-300 dark:border-zinc-800 relative group">
         <div className="flex items-center gap-2 mb-2">
           <Link className="w-4 h-4 text-zinc-600 dark:text-zinc-500" />
           <span className="text-[10px] uppercase tracking-wider text-zinc-600 dark:text-zinc-500 font-semibold">
-            One-time link
+            {t("oneTimeLink")}
           </span>
         </div>
         <div className="font-mono text-sm text-emerald-600 dark:text-emerald-400 break-all pr-8">
@@ -57,18 +59,18 @@ export function ResultCard({ url, onReset }: ResultCardProps) {
         onClick={handleCopy}
         className={`w-full mt-4 h-12 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border ${copied
           ? "bg-emerald-500 border-emerald-500 text-white"
-          : "bg-zinc-100 border-zinc-100 hover:bg-white text-zinc-900"
+          : "bg-zinc-100 border-zinc-100 hover:bg-white text-zinc-900 dark:bg-zinc-800 dark:border-zinc-800 dark:hover:bg-zinc-700 dark:text-zinc-100"
           }`}
       >
         {copied ? (
           <>
             <Check className="w-4 h-4" />
-            Copied!
+            {t("copied")}
           </>
         ) : (
           <>
             <Copy className="w-4 h-4" />
-            Copy to Clipboard
+            {t("copyButton")}
           </>
         )}
       </button>
@@ -82,7 +84,7 @@ export function ResultCard({ url, onReset }: ResultCardProps) {
             }`}
         >
           <QrCode className="w-4 h-4" />
-          {showQR ? "Hide QR" : "QR Code"}
+          {showQR ? t("hideQR") : t("qrCode")}
         </button>
       </div>
 
@@ -101,7 +103,7 @@ export function ResultCard({ url, onReset }: ResultCardProps) {
           className="w-full flex items-center justify-center gap-2 text-zinc-600 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300 transition-colors text-sm py-2 cursor-pointer group"
         >
           <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" />
-          Create another secret
+          {t("createAnother")}
         </button>
       </div>
     </div>

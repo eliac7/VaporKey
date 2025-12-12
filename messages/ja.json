@@ -1,0 +1,120 @@
+{
+  "common": {
+    "appName": "VaporKey",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "close": "閉じる"
+  },
+  "nav": {
+    "home": "ホーム",
+    "about": "について",
+    "github": "GitHub"
+  },
+  "home": {
+    "title": "消える秘密を共有",
+    "subtitle": "ゼロ知識暗号化による安全な自己破壊型の認証情報共有",
+    "getStarted": "始める"
+  },
+  "inputCard": {
+    "title": "安全なリンクを作成",
+    "placeholder": "秘密をここに貼り付けてください...（APIキー、パスワード、プライベートノート）",
+    "characterCount": "{count} 文字",
+    "addPassword": "セカンダリパスワードを追加",
+    "removePassword": "セカンダリパスワードを削除",
+    "passwordPlaceholder": "この秘密を暗号化するパスワードを入力",
+    "passwordHint": "設定すると、リンクを開くにはこのパスワードが必要になります。",
+    "encryptButton": "暗号化してリンクを作成",
+    "encrypting": "暗号化中...",
+    "privacyNote": "エンドツーエンド暗号化。サーバーはデータを読み取れません。",
+    "languageLabel": "言語"
+  },
+  "resultCard": {
+    "title": "リンクの準備完了",
+    "oneTimeLink": "ワンタイムリンク",
+    "copyButton": "クリップボードにコピー",
+    "copied": "コピーしました！",
+    "qrCode": "QRコード",
+    "hideQR": "QRを非表示",
+    "createAnother": "別の秘密を作成"
+  },
+  "retrievalCard": {
+    "locked": {
+      "title": "秘密がロックされています",
+      "description": "この秘密は閲覧後に自己破壊します。",
+      "warning": "この操作は元に戻せません",
+      "revealButton": "秘密を表示"
+    },
+    "revealed": {
+      "title": "秘密が表示されました",
+      "copyButton": "秘密をコピー",
+      "copied": "コピーしました！",
+      "destroyButton": "秘密を破壊",
+      "newSecretButton": "新しい秘密を作成"
+    },
+    "destroyed": {
+      "title": "秘密が破壊されました",
+      "description": "この秘密は破壊され、アクセスできなくなりました。",
+      "reason1": "すでに他の誰かに閲覧されました",
+      "reason2": "リンクの有効期限が切れました",
+      "reason3": "手動で破壊されました",
+      "newSecretButton": "新しい秘密を作成"
+    },
+    "inputRequired": {
+      "title": "復号化キーが必要です",
+      "description": "リンクにキーが含まれていません。",
+      "instruction": "パスワードを入力するか、復号化キーを貼り付けてください。",
+      "placeholder": "パスワードを入力するかキーを貼り付け...",
+      "unlockButton": "秘密をロック解除",
+      "unlocking": "復号化中..."
+    }
+  },
+  "language": {
+    "select": "言語を選択",
+    "en": "英語",
+    "es": "スペイン語",
+    "fr": "フランス語",
+    "de": "ドイツ語",
+    "zh": "中国語",
+    "ja": "日本語",
+    "pt": "ポルトガル語",
+    "ar": "アラビア語",
+    "el": "ギリシャ語"
+  },
+  "syntax": {
+    "text": "プレーンテキスト",
+    "json": "JSON",
+    "javascript": "JavaScript",
+    "typescript": "TypeScript",
+    "python": "Python",
+    "sql": "SQL",
+    "yaml": "YAML",
+    "markdown": "Markdown",
+    "html": "HTML",
+    "css": "CSS",
+    "bash": "Bash",
+    "go": "Go",
+    "rust": "Rust",
+    "java": "Java",
+    "php": "PHP",
+    "ruby": "Ruby",
+    "csharp": "C#",
+    "cpp": "C++"
+  },
+  "footer": {
+    "madeWith": "作成",
+    "by": "作者",
+    "openSource": "オープンソース",
+    "license": "MITライセンス"
+  },
+  "errors": {
+    "generic": "問題が発生しました",
+    "networkError": "ネットワークエラー。接続を確認してください。",
+    "decryptionFailed": "無効なキーまたはパスワード",
+    "secretNotFound": "秘密が見つからないか、すでに破壊されています",
+    "invalidInput": "有効な秘密を入力してください"
+  }
+}
+

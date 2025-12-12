@@ -1,0 +1,120 @@
+{
+  "common": {
+    "appName": "VaporKey",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "cancel": "取消",
+    "confirm": "确认",
+    "close": "关闭"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于",
+    "github": "GitHub"
+  },
+  "home": {
+    "title": "分享会消失的秘密",
+    "subtitle": "使用零知识加密安全地分享自毁凭据",
+    "getStarted": "开始使用"
+  },
+  "inputCard": {
+    "title": "创建安全链接",
+    "placeholder": "在此粘贴您的秘密...（API密钥、密码、私人笔记）",
+    "characterCount": "{count} 个字符",
+    "addPassword": "添加辅助密码",
+    "removePassword": "移除辅助密码",
+    "passwordPlaceholder": "输入密码以加密此秘密",
+    "passwordHint": "如果设置，链接将需要此密码才能打开。",
+    "encryptButton": "加密并创建链接",
+    "encrypting": "加密中...",
+    "privacyNote": "端到端加密。服务器无法读取您的数据。",
+    "languageLabel": "语言"
+  },
+  "resultCard": {
+    "title": "链接已准备好",
+    "oneTimeLink": "一次性链接",
+    "copyButton": "复制到剪贴板",
+    "copied": "已复制！",
+    "qrCode": "二维码",
+    "hideQR": "隐藏二维码",
+    "createAnother": "创建另一个秘密"
+  },
+  "retrievalCard": {
+    "locked": {
+      "title": "秘密已锁定",
+      "description": "此秘密在查看后将自毁。",
+      "warning": "此操作无法撤消",
+      "revealButton": "显示秘密"
+    },
+    "revealed": {
+      "title": "秘密已显示",
+      "copyButton": "复制秘密",
+      "copied": "已复制！",
+      "destroyButton": "销毁秘密",
+      "newSecretButton": "创建新秘密"
+    },
+    "destroyed": {
+      "title": "秘密已销毁",
+      "description": "此秘密已被销毁，无法再访问。",
+      "reason1": "已被其他人查看",
+      "reason2": "链接已过期",
+      "reason3": "已手动销毁",
+      "newSecretButton": "创建新秘密"
+    },
+    "inputRequired": {
+      "title": "需要解密密钥",
+      "description": "链接不包含密钥。",
+      "instruction": "请输入密码或粘贴解密密钥。",
+      "placeholder": "输入密码或粘贴密钥...",
+      "unlockButton": "解锁秘密",
+      "unlocking": "解密中..."
+    }
+  },
+  "language": {
+    "select": "选择语言",
+    "en": "英语",
+    "es": "西班牙语",
+    "fr": "法语",
+    "de": "德语",
+    "zh": "中文",
+    "ja": "日语",
+    "pt": "葡萄牙语",
+    "ar": "阿拉伯语",
+    "el": "希腊语"
+  },
+  "syntax": {
+    "text": "纯文本",
+    "json": "JSON",
+    "javascript": "JavaScript",
+    "typescript": "TypeScript",
+    "python": "Python",
+    "sql": "SQL",
+    "yaml": "YAML",
+    "markdown": "Markdown",
+    "html": "HTML",
+    "css": "CSS",
+    "bash": "Bash",
+    "go": "Go",
+    "rust": "Rust",
+    "java": "Java",
+    "php": "PHP",
+    "ruby": "Ruby",
+    "csharp": "C#",
+    "cpp": "C++"
+  },
+  "footer": {
+    "madeWith": "制作使用",
+    "by": "作者",
+    "openSource": "开源",
+    "license": "MIT 许可证"
+  },
+  "errors": {
+    "generic": "出现问题",
+    "networkError": "网络错误。请检查您的连接。",
+    "decryptionFailed": "无效的密钥或密码",
+    "secretNotFound": "未找到秘密或已被销毁",
+    "invalidInput": "请输入有效的秘密"
+  }
+}
+

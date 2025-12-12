@@ -2,17 +2,20 @@
 
 import { Code2, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export const SUPPORTED_LANGUAGES = [
-  { id: "text", name: "Plain Text" },
-  { id: "typescript", name: "TypeScript" },
-  { id: "javascript", name: "JavaScript" },
-  { id: "json", name: "JSON" },
-  { id: "python", name: "Python" },
-  { id: "bash", name: "Bash" },
-  { id: "sql", name: "SQL" },
-  { id: "css", name: "CSS" },
-  { id: "html", name: "HTML" },
+  "text",
+  "typescript",
+  "javascript",
+  "json",
+  "python",
+  "bash",
+  "sql",
+  "css",
+  "html",
+  "yaml",
+  "markdown",
 ] as const;
 
 interface LanguageSelectorProps {
@@ -26,7 +29,9 @@ export function LanguageSelector({
   onChange,
   disabled,
 }: LanguageSelectorProps) {
+  const t = useTranslations("syntax");
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="relative group">
       <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
@@ -41,11 +46,11 @@ export function LanguageSelector({
         onClick={() => setIsOpen(true)}
         disabled={disabled}
         name="language-selector"
-        className="appearance-none w-fit bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-700 text-zinc-900 dark:text-zinc-300 text-sm rounded-xl pl-10 pr-10 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all cursor-pointer disabled:opacity-50"
+        className="appearance-none w-full bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-700 text-zinc-900 dark:text-zinc-300 text-sm rounded-xl pl-10 pr-10 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all cursor-pointer disabled:opacity-50"
       >
         {SUPPORTED_LANGUAGES.map((lang) => (
-          <option key={lang.id} value={lang.id}>
-            {lang.name}
+          <option key={lang} value={lang}>
+            {t(lang)}
           </option>
         ))}
       </select>

@@ -1,0 +1,119 @@
+{
+  "common": {
+    "appName": "VaporKey",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "github": "GitHub"
+  },
+  "home": {
+    "title": "Share Secrets That Vanish",
+    "subtitle": "Secure, self-destructing credential sharing with zero-knowledge encryption",
+    "getStarted": "Get Started"
+  },
+  "inputCard": {
+    "title": "Create Secure Link",
+    "placeholder": "Paste your secret here... (API keys, passwords, private notes)",
+    "characterCount": "{count} characters",
+    "addPassword": "Add a secondary password",
+    "removePassword": "Remove secondary password",
+    "passwordPlaceholder": "Enter a password to encrypt this secret",
+    "passwordHint": "If set, the link will require this password to open.",
+    "encryptButton": "Encrypt & Create Link",
+    "encrypting": "Encrypting...",
+    "privacyNote": "End-to-End Encrypted. The server cannot read your data.",
+    "languageLabel": "Language"
+  },
+  "resultCard": {
+    "title": "Link Ready",
+    "oneTimeLink": "One-time link",
+    "copyButton": "Copy to Clipboard",
+    "copied": "Copied!",
+    "qrCode": "QR Code",
+    "hideQR": "Hide QR",
+    "createAnother": "Create another secret"
+  },
+  "retrievalCard": {
+    "locked": {
+      "title": "Secret Locked",
+      "description": "This secret will self-destruct after viewing.",
+      "warning": "This action cannot be undone",
+      "revealButton": "Reveal Secret"
+    },
+    "revealed": {
+      "title": "Secret Revealed",
+      "copyButton": "Copy Secret",
+      "copied": "Copied!",
+      "destroyButton": "Destroy Secret",
+      "newSecretButton": "Create New Secret"
+    },
+    "destroyed": {
+      "title": "Secret Destroyed",
+      "description": "This secret has been destroyed and can no longer be accessed.",
+      "reason1": "It was already viewed by someone else",
+      "reason2": "The link has expired",
+      "reason3": "It was manually destroyed",
+      "newSecretButton": "Create a New Secret"
+    },
+    "inputRequired": {
+      "title": "Decryption Key Required",
+      "description": "The link does not contain the key.",
+      "instruction": "Please enter the Password or paste the Decryption Key.",
+      "placeholder": "Enter password or paste key...",
+      "unlockButton": "Unlock Secret",
+      "unlocking": "Decrypting..."
+    }
+  },
+  "language": {
+    "select": "Select Language",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+    "zh": "Chinese",
+    "ja": "Japanese",
+    "pt": "Portuguese",
+    "ar": "Arabic",
+    "el": "Greek"
+  },
+  "syntax": {
+    "text": "Plain Text",
+    "json": "JSON",
+    "javascript": "JavaScript",
+    "typescript": "TypeScript",
+    "python": "Python",
+    "sql": "SQL",
+    "yaml": "YAML",
+    "markdown": "Markdown",
+    "html": "HTML",
+    "css": "CSS",
+    "bash": "Bash",
+    "go": "Go",
+    "rust": "Rust",
+    "java": "Java",
+    "php": "PHP",
+    "ruby": "Ruby",
+    "csharp": "C#",
+    "cpp": "C++"
+  },
+  "footer": {
+    "madeWith": "Made with",
+    "by": "by",
+    "openSource": "Open Source",
+    "license": "MIT License"
+  },
+  "errors": {
+    "generic": "Something went wrong",
+    "networkError": "Network error. Please check your connection.",
+    "decryptionFailed": "Invalid key or password",
+    "secretNotFound": "Secret not found or already destroyed",
+    "invalidInput": "Please enter a valid secret"
+  }
+}

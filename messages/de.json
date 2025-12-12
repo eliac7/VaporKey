@@ -1,0 +1,120 @@
+{
+  "common": {
+    "appName": "VaporKey",
+    "loading": "Lädt...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "close": "Schließen"
+  },
+  "nav": {
+    "home": "Startseite",
+    "about": "Über",
+    "github": "GitHub"
+  },
+  "home": {
+    "title": "Teilen Sie Geheimnisse, die Verschwinden",
+    "subtitle": "Sichere, selbstzerstörende Anmeldedatenfreigabe mit Zero-Knowledge-Verschlüsselung",
+    "getStarted": "Loslegen"
+  },
+  "inputCard": {
+    "title": "Sicheren Link Erstellen",
+    "placeholder": "Fügen Sie Ihr Geheimnis hier ein... (API-Schlüssel, Passwörter, private Notizen)",
+    "characterCount": "{count} Zeichen",
+    "addPassword": "Ein sekundäres Passwort hinzufügen",
+    "removePassword": "Sekundäres Passwort entfernen",
+    "passwordPlaceholder": "Geben Sie ein Passwort ein, um dieses Geheimnis zu verschlüsseln",
+    "passwordHint": "Wenn gesetzt, erfordert der Link dieses Passwort zum Öffnen.",
+    "encryptButton": "Verschlüsseln und Link Erstellen",
+    "encrypting": "Verschlüsselt...",
+    "privacyNote": "Ende-zu-Ende-Verschlüsselung. Der Server kann Ihre Daten nicht lesen.",
+    "languageLabel": "Sprache"
+  },
+  "resultCard": {
+    "title": "Link Bereit",
+    "oneTimeLink": "Einmaliger Link",
+    "copyButton": "In Zwischenablage Kopieren",
+    "copied": "Kopiert!",
+    "qrCode": "QR-Code",
+    "hideQR": "QR Ausblenden",
+    "createAnother": "Weiteres Geheimnis erstellen"
+  },
+  "retrievalCard": {
+    "locked": {
+      "title": "Geheimnis Gesperrt",
+      "description": "Dieses Geheimnis wird sich nach dem Anzeigen selbst zerstören.",
+      "warning": "Diese Aktion kann nicht rückgängig gemacht werden",
+      "revealButton": "Geheimnis Enthüllen"
+    },
+    "revealed": {
+      "title": "Geheimnis Enthüllt",
+      "copyButton": "Geheimnis Kopieren",
+      "copied": "Kopiert!",
+      "destroyButton": "Geheimnis Zerstören",
+      "newSecretButton": "Neues Geheimnis Erstellen"
+    },
+    "destroyed": {
+      "title": "Geheimnis Zerstört",
+      "description": "Dieses Geheimnis wurde zerstört und kann nicht mehr abgerufen werden.",
+      "reason1": "Es wurde bereits von jemand anderem angesehen",
+      "reason2": "Der Link ist abgelaufen",
+      "reason3": "Es wurde manuell zerstört",
+      "newSecretButton": "Ein Neues Geheimnis Erstellen"
+    },
+    "inputRequired": {
+      "title": "Entschlüsselungsschlüssel Erforderlich",
+      "description": "Der Link enthält nicht den Schlüssel.",
+      "instruction": "Bitte geben Sie das Passwort ein oder fügen Sie den Entschlüsselungsschlüssel ein.",
+      "placeholder": "Passwort eingeben oder Schlüssel einfügen...",
+      "unlockButton": "Geheimnis Entsperren",
+      "unlocking": "Entschlüsselt..."
+    }
+  },
+  "language": {
+    "select": "Sprache Auswählen",
+    "en": "Englisch",
+    "es": "Spanisch",
+    "fr": "Französisch",
+    "de": "Deutsch",
+    "zh": "Chinesisch",
+    "ja": "Japanisch",
+    "pt": "Portugiesisch",
+    "ar": "Arabisch",
+    "el": "Griechisch"
+  },
+  "syntax": {
+    "text": "Klartext",
+    "json": "JSON",
+    "javascript": "JavaScript",
+    "typescript": "TypeScript",
+    "python": "Python",
+    "sql": "SQL",
+    "yaml": "YAML",
+    "markdown": "Markdown",
+    "html": "HTML",
+    "css": "CSS",
+    "bash": "Bash",
+    "go": "Go",
+    "rust": "Rust",
+    "java": "Java",
+    "php": "PHP",
+    "ruby": "Ruby",
+    "csharp": "C#",
+    "cpp": "C++"
+  },
+  "footer": {
+    "madeWith": "Gemacht mit",
+    "by": "von",
+    "openSource": "Open Source",
+    "license": "MIT-Lizenz"
+  },
+  "errors": {
+    "generic": "Etwas ist schief gelaufen",
+    "networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
+    "decryptionFailed": "Ungültiger Schlüssel oder Passwort",
+    "secretNotFound": "Geheimnis nicht gefunden oder bereits zerstört",
+    "invalidInput": "Bitte geben Sie ein gültiges Geheimnis ein"
+  }
+}
+

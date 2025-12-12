@@ -6,6 +6,7 @@ import { Lock, Zap, KeyRound } from "lucide-react";
 import { useState } from "react";
 import { LanguageSelector } from "./language-selector";
 import { Turnstile } from "@marsidev/react-turnstile";
+import { useLocale, useTranslations } from "next-intl";
 import {
   encryptData,
   exportKey,
@@ -20,6 +21,8 @@ interface InputCardProps {
 }
 
 export function InputCard({ onSuccess }: InputCardProps) {
+  const t = useTranslations("inputCard");
+  const locale = useLocale();
   const [secret, setSecret] = useState("");
   const [password, setPassword] = useState("");
   const [language, setLanguage] = useState("text");
@@ -67,15 +70,15 @@ export function InputCard({ onSuccess }: InputCardProps) {
 
   return (
     <div className="glass-card rounded-2xl p-6 shadow-2xl shadow-black/50">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-2">
         <div className="flex items-center gap-2">
           <Lock className="w-5 h-5 text-emerald-500" />
           <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-            Create Secure Link
+            {t("title")}
           </h2>
         </div>
 
-        <div className="w-40">
+        <div className="w-full md:w-52">
           <LanguageSelector
             value={language}
             onChange={setLanguage}
@@ -86,7 +89,7 @@ export function InputCard({ onSuccess }: InputCardProps) {
 
       <div className="space-y-2">
         <textarea
-          placeholder="Paste your secret here... (API keys, passwords, private notes)"
+          placeholder={t("placeholder")}
           value={secret}
           autoFocus
           autoComplete="off"
@@ -97,7 +100,7 @@ export function InputCard({ onSuccess }: InputCardProps) {
         />
         <div className="flex justify-end items-end pt-2">
           <span className="text-xs text-zinc-500 dark:text-zinc-600">
-            {secret.length} characters
+            {t("characterCount", { count: secret.length })}
           </span>
         </div>
 
@@ -111,20 +114,20 @@ export function InputCard({ onSuccess }: InputCardProps) {
             className="flex items-center gap-2 text-xs font-medium text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 transition-colors w-fit"
           >
             <KeyRound className="w-3.5 h-3.5" />
-            {showPasswordInput ? "Remove secondary password" : "Add a secondary password"}
+            {showPasswordInput ? t("removePassword") : t("addPassword")}
           </button>
 
           {showPasswordInput && (
             <div className="animate-in fade-in slide-in-from-top-2 duration-200">
               <input
                 type="password"
-                placeholder="Enter a password to encrypt this secret"
+                placeholder={t("passwordPlaceholder")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-900 dark:text-zinc-100 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all"
               />
               <p className="text-[10px] text-zinc-500 mt-1.5 ml-1">
-                If set, the link will require this password to open.
+                {t("passwordHint")}
               </p>
             </div>
           )}
@@ -134,7 +137,7 @@ export function InputCard({ onSuccess }: InputCardProps) {
         <Turnstile
           siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
           options={{
-            language: "en",
+            language: locale,
             size: "flexible",
           }}
           onSuccess={() => setIsTurnstileValid(true)}
@@ -150,18 +153,18 @@ export function InputCard({ onSuccess }: InputCardProps) {
         {isEncrypting ? (
           <>
             <Zap className="w-4 h-4 animate-pulse" />
-            Encrypting...
+            {t("encrypting")}
           </>
         ) : (
           <>
             <Lock className="w-4 h-4" />
-            Encrypt & Create Link
+            {t("encryptButton")}
           </>
         )}
       </button>
 
       <p className="mt-4 text-center text-xs text-zinc-500 dark:text-zinc-600">
-        End-to-End Encrypted. The server cannot read your data.
+        {t("privacyNote")}
       </p>
     </div>
   );

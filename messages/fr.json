@@ -1,0 +1,119 @@
+{
+  "common": {
+    "appName": "VaporKey",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "close": "Fermer"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "github": "GitHub"
+  },
+  "home": {
+    "title": "Partagez des Secrets qui Disparaissent",
+    "subtitle": "Partage sécurisé d'identifiants auto-destructeurs avec chiffrement à connaissance nulle",
+    "getStarted": "Commencer"
+  },
+  "inputCard": {
+    "title": "Créer un Lien Sécurisé",
+    "placeholder": "Collez votre secret ici... (Clés API, mots de passe, notes privées)",
+    "characterCount": "{count} caractères",
+    "addPassword": "Ajouter un mot de passe secondaire",
+    "removePassword": "Supprimer le mot de passe secondaire",
+    "passwordPlaceholder": "Entrez un mot de passe pour chiffrer ce secret",
+    "passwordHint": "Si défini, le lien nécessitera ce mot de passe pour s'ouvrir.",
+    "encryptButton": "Chiffrer et Créer le Lien",
+    "encrypting": "Chiffrement...",
+    "privacyNote": "Chiffrement de bout en bout. Le serveur ne peut pas lire vos données.",
+    "languageLabel": "Langue"
+  },
+  "resultCard": {
+    "title": "Lien Prêt",
+    "oneTimeLink": "Lien à usage unique",
+    "copyButton": "Copier dans le Presse-papiers",
+    "copied": "Copié!",
+    "qrCode": "Code QR",
+    "hideQR": "Masquer le QR",
+    "createAnother": "Créer un autre secret"
+  },
+  "retrievalCard": {
+    "locked": {
+      "title": "Secret Verrouillé",
+      "description": "Ce secret s'autodétruira après visualisation.",
+      "warning": "Cette action ne peut pas être annulée",
+      "revealButton": "Révéler le Secret"
+    },
+    "revealed": {
+      "title": "Secret Révélé",
+      "copyButton": "Copier le Secret",
+      "copied": "Copié!",
+      "destroyButton": "Détruire le Secret",
+      "newSecretButton": "Créer un Nouveau Secret"
+    },
+    "destroyed": {
+      "title": "Secret Détruit",
+      "description": "Ce secret a été détruit et ne peut plus être consulté.",
+      "reason1": "Il a déjà été vu par quelqu'un d'autre",
+      "reason2": "Le lien a expiré",
+      "reason3": "Il a été détruit manuellement",
+      "newSecretButton": "Créer un Nouveau Secret"
+    },
+    "inputRequired": {
+      "title": "Clé de Déchiffrement Requise",
+      "description": "Le lien ne contient pas la clé.",
+      "instruction": "Veuillez entrer le Mot de Passe ou coller la Clé de Déchiffrement.",
+      "placeholder": "Entrez le mot de passe ou collez la clé...",
+      "unlockButton": "Déverrouiller le Secret",
+      "unlocking": "Déchiffrement..."
+    }
+  },
+  "language": {
+    "select": "Sélectionner la Langue",
+    "en": "Anglais",
+    "es": "Espagnol",
+    "fr": "Français",
+    "de": "Allemand",
+    "zh": "Chinois",
+    "ja": "Japonais",
+    "pt": "Portugais",
+    "ar": "Arabe",
+    "el": "Grec"
+  },
+  "syntax": {
+    "text": "Texte Brut",
+    "json": "JSON",
+    "javascript": "JavaScript",
+    "typescript": "TypeScript",
+    "python": "Python",
+    "sql": "SQL",
+    "yaml": "YAML",
+    "markdown": "Markdown",
+    "html": "HTML",
+    "css": "CSS",
+    "bash": "Bash",
+    "go": "Go",
+    "rust": "Rust",
+    "java": "Java",
+    "php": "PHP",
+    "ruby": "Ruby",
+    "csharp": "C#",
+    "cpp": "C++"
+  },
+  "footer": {
+    "madeWith": "Fait avec",
+    "by": "par",
+    "openSource": "Open Source",
+    "license": "Licence MIT"
+  },
+  "errors": {
+    "generic": "Quelque chose s'est mal passé",
+    "networkError": "Erreur réseau. Veuillez vérifier votre connexion.",
+    "decryptionFailed": "Clé ou mot de passe invalide",
+    "secretNotFound": "Secret introuvable ou déjà détruit",
+    "invalidInput": "Veuillez entrer un secret valide"
+  }
+}

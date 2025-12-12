@@ -1,0 +1,119 @@
+{
+  "common": {
+    "appName": "VaporKey",
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجح",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "close": "إغلاق"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "about": "حول",
+    "github": "GitHub"
+  },
+  "home": {
+    "title": "شارك أسرارًا تختفي",
+    "subtitle": "مشاركة آمنة للبيانات ذاتية التدمير مع تشفير بدون معرفة",
+    "getStarted": "ابدأ"
+  },
+  "inputCard": {
+    "title": "إنشاء رابط آمن",
+    "placeholder": "الصق سرك هنا... (مفاتيح API، كلمات المرور، ملاحظات خاصة)",
+    "characterCount": "{count} حرف",
+    "addPassword": "إضافة كلمة مرور ثانوية",
+    "removePassword": "إزالة كلمة المرور الثانوية",
+    "passwordPlaceholder": "أدخل كلمة مرور لتشفير هذا السر",
+    "passwordHint": "إذا تم تعيينها، سيتطلب الرابط كلمة المرور هذه للفتح.",
+    "encryptButton": "تشفير وإنشاء رابط",
+    "encrypting": "جاري التشفير...",
+    "privacyNote": "تشفير من طرف إلى طرف. لا يمكن للخادم قراءة بياناتك.",
+    "languageLabel": "اللغة"
+  },
+  "resultCard": {
+    "title": "الرابط جاهز",
+    "oneTimeLink": "رابط لمرة واحدة",
+    "copyButton": "نسخ إلى الحافظة",
+    "copied": "تم النسخ!",
+    "qrCode": "رمز QR",
+    "hideQR": "إخفاء QR",
+    "createAnother": "إنشاء سر آخر"
+  },
+  "retrievalCard": {
+    "locked": {
+      "title": "السر مقفل",
+      "description": "سيتم تدمير هذا السر تلقائيًا بعد عرضه.",
+      "warning": "لا يمكن التراجع عن هذا الإجراء",
+      "revealButton": "الكشف عن السر"
+    },
+    "revealed": {
+      "title": "تم الكشف عن السر",
+      "copyButton": "نسخ السر",
+      "copied": "تم النسخ!",
+      "destroyButton": "تدمير السر",
+      "newSecretButton": "إنشاء سر جديد"
+    },
+    "destroyed": {
+      "title": "تم تدمير السر",
+      "description": "تم تدمير هذا السر ولم يعد من الممكن الوصول إليه.",
+      "reason1": "تم عرضه بالفعل من قبل شخص آخر",
+      "reason2": "انتهت صلاحية الرابط",
+      "reason3": "تم تدميره يدويًا",
+      "newSecretButton": "إنشاء سر جديد"
+    },
+    "inputRequired": {
+      "title": "مطلوب مفتاح فك التشفير",
+      "description": "الرابط لا يحتوي على المفتاح.",
+      "instruction": "يرجى إدخال كلمة المرور أو لصق مفتاح فك التشفير.",
+      "placeholder": "أدخل كلمة المرور أو الصق المفتاح...",
+      "unlockButton": "فتح السر",
+      "unlocking": "جاري فك التشفير..."
+    }
+  },
+  "language": {
+    "select": "اختر اللغة",
+    "en": "الإنجليزية",
+    "es": "الإسبانية",
+    "fr": "الفرنسية",
+    "de": "الألمانية",
+    "zh": "الصينية",
+    "ja": "اليابانية",
+    "pt": "البرتغالية",
+    "ar": "العربية",
+    "el": "اليونانية"
+  },
+  "syntax": {
+    "text": "نص عادي",
+    "json": "JSON",
+    "javascript": "JavaScript",
+    "typescript": "TypeScript",
+    "python": "Python",
+    "sql": "SQL",
+    "yaml": "YAML",
+    "markdown": "Markdown",
+    "html": "HTML",
+    "css": "CSS",
+    "bash": "Bash",
+    "go": "Go",
+    "rust": "Rust",
+    "java": "Java",
+    "php": "PHP",
+    "ruby": "Ruby",
+    "csharp": "C#",
+    "cpp": "C++"
+  },
+  "footer": {
+    "madeWith": "صنع بـ",
+    "by": "بواسطة",
+    "openSource": "مفتوح المصدر",
+    "license": "ترخيص MIT"
+  },
+  "errors": {
+    "generic": "حدث خطأ ما",
+    "networkError": "خطأ في الشبكة. يرجى التحقق من اتصالك.",
+    "decryptionFailed": "مفتاح أو كلمة مرور غير صالحة",
+    "secretNotFound": "لم يتم العثور على السر أو تم تدميره بالفعل",
+    "invalidInput": "يرجى إدخال سر صالح"
+  }
+}

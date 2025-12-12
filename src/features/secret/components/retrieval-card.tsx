@@ -4,6 +4,7 @@ import { AlertTriangle, Clock, Copy, Eye, Plus, Skull } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { SyntaxViewer } from "./syntax-viewer";
 import { Turnstile } from "@marsidev/react-turnstile";
+import { useTranslations } from "next-intl";
 
 interface RetrievalCardProps {
   state: "locked" | "revealed" | "destroyed";
@@ -22,6 +23,7 @@ export function RetrievalCard({
   onDestroy,
   onNewSecret,
 }: RetrievalCardProps) {
+  const t = useTranslations("retrievalCard");
   const [displayText, setDisplayText] = useState("");
   const [countdown, setCountdown] = useState(30);
   const [isDecrypting, setIsDecrypting] = useState(false);
@@ -107,7 +109,7 @@ export function RetrievalCard({
           <div className="p-1.5 rounded-lg bg-amber-500/10">
             <AlertTriangle className="w-5 h-5 text-amber-500" />
           </div>
-          <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">Secure Message</h2>
+          <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">{t("locked.title")}</h2>
         </div>
 
         <div className="relative bg-zinc-100 dark:bg-zinc-950/50 rounded-xl p-6 border border-zinc-300 dark:border-zinc-800 overflow-hidden">
@@ -127,7 +129,7 @@ export function RetrievalCard({
         <div className="mt-4 p-3 rounded-lg bg-amber-500/5 border border-amber-500/10">
           <p className="text-amber-500/80 text-xs text-center flex items-center justify-center gap-2">
             <AlertTriangle className="w-3 h-3" />
-            This message will self-destruct immediately after reading
+            {t("locked.description")}
           </p>
         </div>
 
@@ -147,7 +149,7 @@ export function RetrievalCard({
           className="w-full mt-6 bg-emerald-600 hover:bg-emerald-500 text-white font-medium h-12 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-900/20 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Eye className="w-4 h-4" />
-          Reveal Secret
+          {t("locked.revealButton")}
         </button>
       </div>
     );
@@ -162,7 +164,7 @@ export function RetrievalCard({
               <Eye className="w-5 h-5 text-emerald-500" />
             </div>
             <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              Secret Revealed
+              {t("revealed.title")}
             </h2>
           </div>
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20">
@@ -202,7 +204,7 @@ export function RetrievalCard({
             <button
               onClick={() => navigator.clipboard.writeText(secret)}
               className="p-2 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-lg transition-colors border border-zinc-300 dark:border-zinc-700"
-              title="Copy to clipboard"
+              title={t("revealed.copyButton")}
             >
               <Copy className="w-4 h-4" />
             </button>
@@ -231,18 +233,18 @@ export function RetrievalCard({
           <Skull className="w-12 h-12 text-zinc-500 dark:text-zinc-600" />
         </div>
         <h2 className="text-xl font-medium text-zinc-700 dark:text-zinc-300 mb-2">
-          Secret Destroyed
+          {t("destroyed.title")}
         </h2>
         <p className="text-zinc-600 dark:text-zinc-500 text-center text-sm max-w-[260px] leading-relaxed">
-          This message has been permanently deleted and no longer exists.
+          {t("destroyed.description")}
         </p>
 
         <button
           onClick={onNewSecret}
-          className="mt-6 w-full h-12 bg-zinc-100 hover:bg-white text-zinc-900 font-medium rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
+          className="mt-6 w-full h-12 bg-zinc-100 hover:bg-white dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-medium rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
         >
           <Plus className="w-4 h-4" />
-          Create New Secret
+          {t("destroyed.newSecretButton")}
         </button>
       </div>
     </div>

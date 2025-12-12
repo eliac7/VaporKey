@@ -3,12 +3,14 @@
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState, useRef } from "react";
 import { client } from "@/lib/client";
-import { useRouter } from "next/navigation";
 import { RetrievalCard } from "./retrieval-card";
 import { decryptData, importKey, deriveKeyFromPassword, stringToBuffer } from "@/lib/crypto";
 import { ArrowRight, Loader2, Link2Off } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/routing";
 
 export default function SecretReveal({ secretId }: { secretId: string }) {
+  const t = useTranslations("retrievalCard");
   const router = useRouter();
 
   const [viewState, setViewState] = useState<"checking" | "locked" | "input_required" | "revealed" | "destroyed">("checking");
@@ -110,10 +112,10 @@ export default function SecretReveal({ secretId }: { secretId: string }) {
           <div className="w-16 h-16 bg-zinc-200 dark:bg-zinc-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <Link2Off className="w-8 h-8 text-zinc-500" />
           </div>
-          <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Decryption Key Required</h2>
+          <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">{t("inputRequired.title")}</h2>
           <p className="text-zinc-500 dark:text-zinc-400 mt-2 text-sm">
-            The link does not contain the key. <br />
-            Please enter the <strong>Password</strong> or paste the <strong>Decryption Key</strong>.
+            {t("inputRequired.description")} <br />
+            {t("inputRequired.instruction")}
           </p>
         </div>
 
@@ -121,7 +123,7 @@ export default function SecretReveal({ secretId }: { secretId: string }) {
           <input
             type="password"
             autoFocus
-            placeholder="Enter password or paste key..."
+            placeholder={t("inputRequired.placeholder")}
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && userInput && fetchAndDecrypt()}
@@ -136,11 +138,11 @@ export default function SecretReveal({ secretId }: { secretId: string }) {
             {isPending ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                Decrypting...
+                {t("inputRequired.unlocking")}
               </>
             ) : (
               <>
-                Unlock Secret <ArrowRight className="w-4 h-4" />
+                {t("inputRequired.unlockButton")} <ArrowRight className="w-4 h-4" />
               </>
             )}
           </button>

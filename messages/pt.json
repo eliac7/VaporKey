@@ -1,0 +1,120 @@
+{
+  "common": {
+    "appName": "VaporKey",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "close": "Fechar"
+  },
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "github": "GitHub"
+  },
+  "home": {
+    "title": "Compartilhe Segredos que Desaparecem",
+    "subtitle": "Compartilhamento seguro de credenciais auto-destrutivas com criptografia de conhecimento zero",
+    "getStarted": "Começar"
+  },
+  "inputCard": {
+    "title": "Criar Link Seguro",
+    "placeholder": "Cole seu segredo aqui... (Chaves API, senhas, notas privadas)",
+    "characterCount": "{count} caracteres",
+    "addPassword": "Adicionar uma senha secundária",
+    "removePassword": "Remover senha secundária",
+    "passwordPlaceholder": "Digite uma senha para criptografar este segredo",
+    "passwordHint": "Se definido, o link exigirá esta senha para abrir.",
+    "encryptButton": "Criptografar e Criar Link",
+    "encrypting": "Criptografando...",
+    "privacyNote": "Criptografia ponta-a-ponta. O servidor não pode ler seus dados.",
+    "languageLabel": "Idioma"
+  },
+  "resultCard": {
+    "title": "Link Pronto",
+    "oneTimeLink": "Link de uso único",
+    "copyButton": "Copiar para a Área de Transferência",
+    "copied": "Copiado!",
+    "qrCode": "Código QR",
+    "hideQR": "Ocultar QR",
+    "createAnother": "Criar outro segredo"
+  },
+  "retrievalCard": {
+    "locked": {
+      "title": "Segredo Bloqueado",
+      "description": "Este segredo se autodestruirá após a visualização.",
+      "warning": "Esta ação não pode ser desfeita",
+      "revealButton": "Revelar Segredo"
+    },
+    "revealed": {
+      "title": "Segredo Revelado",
+      "copyButton": "Copiar Segredo",
+      "copied": "Copiado!",
+      "destroyButton": "Destruir Segredo",
+      "newSecretButton": "Criar Novo Segredo"
+    },
+    "destroyed": {
+      "title": "Segredo Destruído",
+      "description": "Este segredo foi destruído e não pode mais ser acessado.",
+      "reason1": "Já foi visto por outra pessoa",
+      "reason2": "O link expirou",
+      "reason3": "Foi destruído manualmente",
+      "newSecretButton": "Criar um Novo Segredo"
+    },
+    "inputRequired": {
+      "title": "Chave de Descriptografia Necessária",
+      "description": "O link não contém a chave.",
+      "instruction": "Por favor, insira a Senha ou cole a Chave de Descriptografia.",
+      "placeholder": "Digite a senha ou cole a chave...",
+      "unlockButton": "Desbloquear Segredo",
+      "unlocking": "Descriptografando..."
+    }
+  },
+  "language": {
+    "select": "Selecionar Idioma",
+    "en": "Inglês",
+    "es": "Espanhol",
+    "fr": "Francês",
+    "de": "Alemão",
+    "zh": "Chinês",
+    "ja": "Japonês",
+    "pt": "Português",
+    "ar": "Árabe",
+    "el": "Grego"
+  },
+  "syntax": {
+    "text": "Texto Simples",
+    "json": "JSON",
+    "javascript": "JavaScript",
+    "typescript": "TypeScript",
+    "python": "Python",
+    "sql": "SQL",
+    "yaml": "YAML",
+    "markdown": "Markdown",
+    "html": "HTML",
+    "css": "CSS",
+    "bash": "Bash",
+    "go": "Go",
+    "rust": "Rust",
+    "java": "Java",
+    "php": "PHP",
+    "ruby": "Ruby",
+    "csharp": "C#",
+    "cpp": "C++"
+  },
+  "footer": {
+    "madeWith": "Feito com",
+    "by": "por",
+    "openSource": "Código Aberto",
+    "license": "Licença MIT"
+  },
+  "errors": {
+    "generic": "Algo deu errado",
+    "networkError": "Erro de rede. Por favor, verifique sua conexão.",
+    "decryptionFailed": "Chave ou senha inválida",
+    "secretNotFound": "Segredo não encontrado ou já destruído",
+    "invalidInput": "Por favor, insira um segredo válido"
+  }
+}
+

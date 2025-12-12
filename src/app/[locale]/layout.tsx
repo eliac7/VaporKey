@@ -1,0 +1,79 @@
+import { Providers } from "@/app/providers";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { routing } from '@/i18n/routing';
+import type { Metadata } from "next";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { JetBrains_Mono } from "next/font/google";
+import { notFound } from 'next/navigation';
+import "../globals.css";
+import { LanguageSelector } from "@/components/language-selector";
+
+const jetBrainsMono = JetBrains_Mono({
+    subsets: ["latin"],
+    variable: "--font-jetBrainsMono",
+});
+
+export const metadata: Metadata = {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
+    title: "VaporKey - Secure Ephemeral Credential Sharing",
+    description: "Share secrets securely with self-destructing one-time links",
+    icons: {
+        icon: "/favicon.ico",
+    },
+    openGraph: {
+        images: [
+            {
+                url: "/og-image.jpg",
+            },
+        ],
+    },
+};
+
+export function generateStaticParams() {
+    return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
+    children,
+    params,
+}: {
+    children: React.ReactNode;
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
+
+    if (!(routing.locales as readonly string[]).includes(locale)) {
+        notFound();
+    }
+
+    const messages = await getMessages();
+
+    const dir = locale === 'ar' ? 'rtl' : 'ltr';
+
+    return (
+        <html lang={locale} dir={dir} suppressHydrationWarning>
+            <body
+                className={`${jetBrainsMono.variable} antialiased noise-bg`}
+                suppressHydrationWarning
+            >
+                <NextIntlClientProvider messages={messages} locale={locale}>
+                    <Providers>
+                        <main className="flex flex-col items-center justify-center min-h-screen bg-zinc-50 dark:bg-zinc-950">
+                            <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
+                                <LanguageSelector />
+                                <ThemeToggle />
+                            </div>
+                            <Header />
+                            {children}
+                            <Footer />
+                        </main>
+                    </Providers>
+                </NextIntlClientProvider>
+            </body>
+        </html>
+    );
+}
+
