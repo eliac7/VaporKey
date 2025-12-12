@@ -2,7 +2,7 @@
 
 import { client } from "@/lib/client";
 import { useMutation } from "@tanstack/react-query";
-import { Lock, Zap, KeyRound } from "lucide-react";
+import { Lock, Zap, KeyRound, EyeIcon, EyeOffIcon } from "lucide-react";
 import { useState } from "react";
 import { SyntaxSelector } from "./syntax-selector";
 import { Turnstile } from "@marsidev/react-turnstile";
@@ -28,6 +28,7 @@ export function InputCard({ onSuccess }: InputCardProps) {
   const [language, setLanguage] = useState("text");
   const [isTurnstileValid, setIsTurnstileValid] = useState(false);
   const [showPasswordInput, setShowPasswordInput] = useState(false);
+  const [showPasswordInputType, setShowPasswordInputType] = useState<"password" | "text">("password");
 
   const { mutate: encrypt, isPending: isEncrypting } = useMutation({
     mutationFn: async () => {
@@ -111,25 +112,33 @@ export function InputCard({ onSuccess }: InputCardProps) {
               setShowPasswordInput(!showPasswordInput);
               if (showPasswordInput) setPassword("");
             }}
-            className="flex items-center gap-2 text-xs font-medium text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 transition-colors w-fit"
+            className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-emerald-500/40 hover:border-emerald-500/60 rounded-xl text-emerald-500 hover:text-emerald-500 transition-all duration-200 group bg-emerald-500/5 hover:bg-emerald-600/10"
           >
-            <KeyRound className="w-3.5 h-3.5" />
+            <KeyRound className="w-4 h-4 transition-transform group-hover:rotate-12" />
             {showPasswordInput ? t("removePassword") : t("addPassword")}
           </button>
 
           {showPasswordInput && (
-            <div className="animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="animate-in fade-in slide-in-from-top-2 duration-200 relative">
               <input
-                type="password"
+                type={showPasswordInputType}
+                autoComplete="new-password"
+                data-form-type="other"
+                name="encryption-password"
                 placeholder={t("passwordPlaceholder")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-900 dark:text-zinc-100 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all"
+                className="w-full bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 rounded-xl px-4 py-2.5 pr-10 text-sm text-zinc-900 dark:text-zinc-100 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all"
               />
               <p className="text-[10px] text-zinc-500 mt-1.5 ml-1">
                 {t("passwordHint")}
               </p>
+              <span className="absolute right-3 top-3 cursor-pointer hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors" onClick={() => setShowPasswordInputType(showPasswordInputType === "password" ? "text" : "password")}>
+                {showPasswordInputType === "password" ? <EyeIcon className="w-4 h-4 text-zinc-500" /> : <EyeOffIcon className="w-4 h-4 text-zinc-500" />}
+              </span>
+
             </div>
+
           )}
         </div>
 
