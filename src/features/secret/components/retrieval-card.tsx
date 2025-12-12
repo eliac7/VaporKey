@@ -4,7 +4,7 @@ import { AlertTriangle, Clock, Copy, Eye, Plus, Skull } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { SyntaxViewer } from "./syntax-viewer";
 import { Turnstile } from "@marsidev/react-turnstile";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 interface RetrievalCardProps {
   state: "locked" | "revealed" | "destroyed";
@@ -24,6 +24,7 @@ export function RetrievalCard({
   onNewSecret,
 }: RetrievalCardProps) {
   const t = useTranslations("retrievalCard");
+  const locale = useLocale();
   const [displayText, setDisplayText] = useState("");
   const [countdown, setCountdown] = useState(30);
   const [isDecrypting, setIsDecrypting] = useState(false);
@@ -136,7 +137,7 @@ export function RetrievalCard({
         <Turnstile
           siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
           options={{
-            language: "en",
+            language: locale,
             size: "flexible",
           }}
           onSuccess={() => setIsTurnstileValid(true)}

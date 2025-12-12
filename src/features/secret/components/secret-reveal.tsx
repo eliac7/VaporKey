@@ -107,7 +107,7 @@ export default function SecretReveal({ secretId }: { secretId: string }) {
 
   if (viewState === "input_required") {
     return (
-      <div className="glass-card rounded-2xl p-8 shadow-2xl shadow-black/50 max-w-md w-full animate-in fade-in zoom-in-95 duration-500">
+      <div className="glass-card rounded-2xl p-8 shadow-2xl shadow-black/50 max-w-xl w-full animate-in fade-in zoom-in-95 duration-500">
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-zinc-200 dark:bg-zinc-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <Link2Off className="w-8 h-8 text-zinc-500" />
