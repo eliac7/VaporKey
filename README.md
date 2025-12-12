@@ -66,6 +66,7 @@ VaporKey uses a **Client-Side Encryption** model with two distinct security mode
 - **Single-View Access:** Secrets are destroyed immediately after being fetched once.
 - **Password Protection:** Optional secondary password using PBKDF2/SHA-256 for key derivation.
 - **Auto-Expiration:** Secrets have a hard TTL (24 hours) if not viewed.
+- **Internationalization:** Full support for 9 languages (English, Greek, Spanish, French, German, Chinese, Japanese, Portuguese, Arabic) with RTL support.
 - **Syntax Highlighting:** Automatic highlighting for JSON, TypeScript, Python, SQL, and more via `Shiki`.
 - **Bot Protection:** Integrated Cloudflare Turnstile CAPTCHA.
 - **QR Code Generation:** Instantly generate QR codes for mobile sharing.
@@ -82,6 +83,7 @@ This project leverages a bleeding-edge stack focusing on performance and type sa
 | **Database**     | **Upstash Redis**   | Serverless Redis for ephemeral key-value storage.    |
 | **Styling**      | **Tailwind CSS v4** | Next-gen utility CSS engine.                         |
 | **Cryptography** | **Web Crypto API**  | Native AES-GCM & PBKDF2 (SHA-256) implementation.    |
+| **i18n**         | **next-intl**       | Type-safe internationalization with 9 languages.     |
 | **Validation**   | **Zod**             | Runtime schema validation.                           |
 | **Icons**        | **Lucide React**    | Consistent and lightweight icon set.                 |
 
@@ -142,16 +144,49 @@ This project leverages a bleeding-edge stack focusing on performance and type sa
 ```bash
 src/
 ├── app/
-│   ├── (routes)/s/[secretId]/ # The secret reveal page
+│   ├── [locale]/              # Internationalized routes
+│   │   ├── layout.tsx         # Locale-aware layout
+│   │   ├── page.tsx           # Homepage
+│   │   └── s/[secretId]/      # The secret reveal page
 │   ├── api/[[...slugs]]/      # ElysiaJS API entry point
 │   └── globals.css            # Tailwind v4 & Theme config
 ├── components/                # Shared UI components
+│   └── language-selector.tsx  # Language switcher
 ├── features/
 │   ├── main/                  # Homepage (Input/Encryption logic)
 │   └── secret/                # Reveal page (Decryption/Display logic)
+├── i18n/
+│   ├── request.ts             # Server-side i18n configuration
+│   └── routing.ts             # i18n routing configuration
 ├── lib/
 │   ├── client.ts              # Elysia Eden (Type-safe API client)
 │   ├── crypto.ts              # AES-GCM & PBKDF2 implementation
 │   └── redis.ts               # Database connection
-└── providers/                 # React Context providers (Theme, Query)
+├── providers/                 # React Context providers (Theme, Query)
+└── middleware.ts              # i18n middleware for locale routing
+
+messages/
+├── en.json                    # English translations
+├── el.json                    # Greek translations
+├── es.json                    # Spanish translations
+├── fr.json                    # French translations
+├── de.json                    # German translations
+├── zh.json                    # Chinese translations
+├── ja.json                    # Japanese translations
+├── pt.json                    # Portuguese translations
+└── ar.json                    # Arabic translations
 ```
+
+## 🌍 Supported Languages
+
+VaporKey is available in 9 languages with full translations:
+
+- 🇬🇧 **English** (en)
+- 🇬🇷 **Greek** (el) - Ελληνικά
+- 🇪🇸 **Spanish** (es) - Español
+- 🇫🇷 **French** (fr) - Français
+- 🇩🇪 **German** (de) - Deutsch
+- 🇨🇳 **Chinese** (zh) - 中文
+- 🇯🇵 **Japanese** (ja) - 日本語
+- 🇵🇹 **Portuguese** (pt) - Português
+- 🇸🇦 **Arabic** (ar) - العربية (RTL Support)
