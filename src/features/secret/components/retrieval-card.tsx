@@ -175,7 +175,7 @@ export function RetrievalCard({
           </div>
         </div>
 
-        <div className="bg-zinc-100 dark:bg-zinc-950/50 rounded-xl p-4 border border-zinc-300 dark:border-zinc-800 relative overflow-hidden group min-h-[100px]">
+        <div className="bg-zinc-100 dark:bg-zinc-950/50 rounded-xl p-4 border border-zinc-300 dark:border-zinc-800 relative overflow-y-auto group min-h-[100px] max-h-[500px]">
           {language !== "text" && (
             <div className="absolute top-0 right-0 px-3 py-1 bg-zinc-200 dark:bg-zinc-900 border-b border-l border-zinc-300 dark:border-zinc-800 rounded-bl-xl text-[10px] uppercase tracking-wider text-zinc-600 dark:text-zinc-500 font-bold z-10">
               {language}

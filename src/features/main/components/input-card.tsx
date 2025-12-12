@@ -4,7 +4,7 @@ import { client } from "@/lib/client";
 import { useMutation } from "@tanstack/react-query";
 import { Lock, Zap, KeyRound } from "lucide-react";
 import { useState } from "react";
-import { LanguageSelector } from "./language-selector";
+import { SyntaxSelector } from "./syntax-selector";
 import { Turnstile } from "@marsidev/react-turnstile";
 import { useLocale, useTranslations } from "next-intl";
 import {
@@ -79,7 +79,7 @@ export function InputCard({ onSuccess }: InputCardProps) {
         </div>
 
         <div className="w-full md:w-52">
-          <LanguageSelector
+          <SyntaxSelector
             value={language}
             onChange={setLanguage}
             disabled={isEncrypting}

@@ -1,0 +1,68 @@
+"use client";
+
+import { Code2, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+
+export const SUPPORTED_LANGUAGES = [
+    "text",
+    "typescript",
+    "javascript",
+    "json",
+    "python",
+    "bash",
+    "sql",
+    "css",
+    "html",
+    "yaml",
+    "markdown",
+] as const;
+
+interface SyntaxSelectorProps {
+    value: string;
+    onChange: (value: string) => void;
+    disabled?: boolean;
+}
+
+export function SyntaxSelector({
+    value,
+    onChange,
+    disabled,
+}: SyntaxSelectorProps) {
+    const t = useTranslations("syntax");
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="relative group">
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                <Code2 className="w-4 h-4 text-zinc-600 dark:text-zinc-400 group-hover:text-emerald-500 transition-colors" />
+            </div>
+
+            <select
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                onFocus={() => setIsOpen(true)}
+                onBlur={() => setIsOpen(false)}
+                onClick={() => setIsOpen(true)}
+                disabled={disabled}
+                name="syntax-selector"
+                className="appearance-none w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600 text-zinc-900 dark:text-zinc-100 text-sm rounded-xl pl-10 pr-10 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all cursor-pointer disabled:opacity-50"
+            >
+                {SUPPORTED_LANGUAGES.map((lang) => (
+                    <option key={lang} value={lang}>
+                        {t(lang)}
+                    </option>
+                ))}
+            </select>
+
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                {!isOpen ? (
+                    <ChevronDown className="w-4 h-4 text-emerald-500" />
+                ) : (
+                    <ChevronUp className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+                )}
+            </div>
+        </div>
+    );
+}
+
