@@ -31,27 +31,32 @@ Unlike standard pastebins, VaporKey creates **self-destructing, single-view link
 
 ## 🛡️ Security Architecture
 
-VaporKey uses a **Client-Side Encryption** model. Here is the analytical breakdown of the data flow:
+VaporKey uses a **Client-Side Encryption** model with two distinct security modes:
 
 ### 1. The Encryption (Sender)
 
-1.  **Generation:** When you click "Encrypt", the browser generates a 256-bit AES-GCM key via the Web Crypto API (`window.crypto.subtle`).
-2.  **Encryption:** The payload (secret + language metadata) is encrypted locally using this key.
-3.  **Storage:** The _encrypted_ data is sent to the backend (ElysiaJS/Next.js) and stored in Redis with a TTL (Time-To-Live).
-4.  **Link Creation:** The server returns a unique ID. The browser constructs the final URL:
-    ```
-    [https://example.com/s/](https://example.com/s/)[id]#[decryption_key]
-    ```
-    > **Crucial:** The decryption key is appended as a **URL Hash Fragment** (`#...`). Hash fragments are **never sent to the server** in HTTP requests. They exist only on the client side.
+**Mode A: Standard (Random Key)**
+
+1.  **Generation:** The browser generates a 256-bit AES-GCM key.
+2.  **Encryption:** The payload is encrypted locally.
+3.  **Link:** The key is appended to the URL hash fragment (`#key`). The server never sees this key.
+
+**Mode B: Password Protected (PBKDF2)**
+
+1.  **Derivation:** The user inputs a password. The browser generates a random **Salt** and uses **PBKDF2** (100,000 iterations) to derive a 256-bit AES key.
+2.  **Encryption:** The payload is encrypted with this derived key.
+3.  **Storage:** The `Salt` is stored alongside the encrypted data in Redis.
+4.  **Link:** The URL is generated **without a key**. The recipient _must_ know the password to derive the key and unlock the data.
 
 ### 2. The Retrieval (Recipient)
 
-1.  **Access:** The recipient opens the link. The browser parses the ID from the path and the key from the hash.
-2.  **Fetch:** The client requests the data from the API using the ID.
-3.  **Atomic Destruction:** The backend performs a `GETDEL` (Get and Delete) operation on Redis.
+1.  **Access:** The recipient opens the link.
+2.  **Atomic Destruction:** The backend performs a `GETDEL` (Get and Delete) operation on Redis.
     - If the secret exists, it is returned and immediately wiped from memory.
     - If a second person tries to view it, the database is already empty.
-4.  **Decryption:** The browser uses the key from the URL hash to decrypt the data locally and render it.
+3.  **Decryption:**
+    - **Standard:** The browser takes the key from the URL hash and decrypts the data.
+    - **Password:** The browser prompts the user for the password, combines it with the stored Salt, re-derives the key, and attempts decryption.
 
 ---
 
@@ -59,6 +64,7 @@ VaporKey uses a **Client-Side Encryption** model. Here is the analytical breakdo
 
 - **Zero-Knowledge Privacy:** The server cannot read your secrets.
 - **Single-View Access:** Secrets are destroyed immediately after being fetched once.
+- **Password Protection:** Optional secondary password using PBKDF2/SHA-256 for key derivation.
 - **Auto-Expiration:** Secrets have a hard TTL (24 hours) if not viewed.
 - **Syntax Highlighting:** Automatic highlighting for JSON, TypeScript, Python, SQL, and more via `Shiki`.
 - **Bot Protection:** Integrated Cloudflare Turnstile CAPTCHA.
@@ -75,7 +81,7 @@ This project leverages a bleeding-edge stack focusing on performance and type sa
 | **API**          | **ElysiaJS**        | Running as a Next.js API route via `@elysiajs/eden`. |
 | **Database**     | **Upstash Redis**   | Serverless Redis for ephemeral key-value storage.    |
 | **Styling**      | **Tailwind CSS v4** | Next-gen utility CSS engine.                         |
-| **Cryptography** | **Web Crypto API**  | Native browser standard for AES-GCM encryption.      |
+| **Cryptography** | **Web Crypto API**  | Native AES-GCM & PBKDF2 (SHA-256) implementation.    |
 | **Validation**   | **Zod**             | Runtime schema validation.                           |
 | **Icons**        | **Lucide React**    | Consistent and lightweight icon set.                 |
 
@@ -145,7 +151,7 @@ src/
 │   └── secret/                # Reveal page (Decryption/Display logic)
 ├── lib/
 │   ├── client.ts              # Elysia Eden (Type-safe API client)
-│   ├── crypto.ts              # AES-GCM implementation
+│   ├── crypto.ts              # AES-GCM & PBKDF2 implementation
 │   └── redis.ts               # Database connection
 └── providers/                 # React Context providers (Theme, Query)
 ```
