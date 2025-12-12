@@ -2,12 +2,18 @@
 
 import { client } from "@/lib/client";
 import { useMutation } from "@tanstack/react-query";
-import { Lock, Zap } from "lucide-react";
+import { Lock, Zap, KeyRound } from "lucide-react";
 import { useState } from "react";
 import { LanguageSelector } from "./language-selector";
 import { Turnstile } from "@marsidev/react-turnstile";
-import { encryptData, exportKey } from "@/lib/crypto";
-import { generateKey } from "@/lib/crypto";
+import {
+  encryptData,
+  exportKey,
+  generateKey,
+  deriveKeyFromPassword,
+  generateSalt,
+  bufferToString
+} from "@/lib/crypto";
 
 interface InputCardProps {
   onSuccess: (url: string) => void;
@@ -15,8 +21,10 @@ interface InputCardProps {
 
 export function InputCard({ onSuccess }: InputCardProps) {
   const [secret, setSecret] = useState("");
+  const [password, setPassword] = useState("");
   const [language, setLanguage] = useState("text");
   const [isTurnstileValid, setIsTurnstileValid] = useState(false);
+  const [showPasswordInput, setShowPasswordInput] = useState(false);
 
   const { mutate: encrypt, isPending: isEncrypting } = useMutation({
     mutationFn: async () => {
@@ -25,20 +33,32 @@ export function InputCard({ onSuccess }: InputCardProps) {
         language,
       });
 
-      const key = await generateKey();
+      let key: CryptoKey;
+      let finalEncryptedData: string;
+      let urlHash = "";
 
-      const encryptedData = await encryptData(payload, key);
+      if (password && showPasswordInput) {
+        const salt = generateSalt();
+        key = await deriveKeyFromPassword(password, salt);
+        const encryptedContent = await encryptData(payload, key);
+        finalEncryptedData = `${bufferToString(salt)}:${encryptedContent}`;
+      } else {
+        key = await generateKey();
+        finalEncryptedData = await encryptData(payload, key);
+
+        const keyString = await exportKey(key);
+        urlHash = `#${keyString}`;
+      }
 
       const res = await client.api.secret.create.post({
-        encryptedData,
+        encryptedData: finalEncryptedData,
       });
 
       if (!res.data?.id) {
         throw new Error("Failed to create secret");
       }
 
-      const keyString = await exportKey(key);
-      return `${window.location.origin}/s/${res.data.id}#${keyString}`;
+      return `${window.location.origin}/s/${res.data.id}${urlHash}`;
     },
     onSuccess: (url) => {
       onSuccess(url);
@@ -69,19 +89,48 @@ export function InputCard({ onSuccess }: InputCardProps) {
           placeholder="Paste your secret here... (API keys, passwords, private notes)"
           value={secret}
           autoFocus
+          autoComplete="off"
           onChange={(e) => setSecret(e.target.value)}
           className="w-full min-h-40 bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 rounded-xl text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 font-mono text-sm resize-none p-4 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all"
           spellCheck={false}
-          rows={10}
+          rows={8}
         />
-        <div className="flex justify-end">
+        <div className="flex justify-end items-end pt-2">
           <span className="text-xs text-zinc-500 dark:text-zinc-600">
             {secret.length} characters
           </span>
         </div>
-      </div>
 
-      <div className="flex justify-end mt-4">
+
+        <div className="flex flex-col gap-3">
+          <button
+            onClick={() => {
+              setShowPasswordInput(!showPasswordInput);
+              if (showPasswordInput) setPassword("");
+            }}
+            className="flex items-center gap-2 text-xs font-medium text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 transition-colors w-fit"
+          >
+            <KeyRound className="w-3.5 h-3.5" />
+            {showPasswordInput ? "Remove secondary password" : "Add a secondary password"}
+          </button>
+
+          {showPasswordInput && (
+            <div className="animate-in fade-in slide-in-from-top-2 duration-200">
+              <input
+                type="password"
+                placeholder="Enter a password to encrypt this secret"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-900 dark:text-zinc-100 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all"
+              />
+              <p className="text-[10px] text-zinc-500 mt-1.5 ml-1">
+                If set, the link will require this password to open.
+              </p>
+            </div>
+          )}
+        </div>
+
+
         <Turnstile
           siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
           options={{
@@ -95,8 +144,8 @@ export function InputCard({ onSuccess }: InputCardProps) {
 
       <button
         onClick={() => encrypt()}
-        disabled={!secret.trim() || isEncrypting || !isTurnstileValid}
-        className="w-full mt-6 bg-emerald-600 hover:bg-emerald-500 text-white dak font-medium h-12 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        disabled={!secret.trim() || isEncrypting || !isTurnstileValid || (showPasswordInput && !password)}
+        className="w-full mt-6 bg-emerald-600 hover:bg-emerald-500 text-white font-medium h-12 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {isEncrypting ? (
           <>

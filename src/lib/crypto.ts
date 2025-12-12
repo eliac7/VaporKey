@@ -38,6 +38,33 @@ export async function generateKey(): Promise<CryptoKey> {
   );
 }
 
+export async function deriveKeyFromPassword(
+  password: string,
+  salt: Uint8Array
+): Promise<CryptoKey> {
+  const enc = new TextEncoder();
+  const keyMaterial = await window.crypto.subtle.importKey(
+    "raw",
+    enc.encode(password),
+    { name: "PBKDF2" },
+    false,
+    ["deriveKey"]
+  );
+
+  return window.crypto.subtle.deriveKey(
+    {
+      name: "PBKDF2",
+      salt: new Uint8Array(salt).buffer as ArrayBuffer,
+      iterations: 100000,
+      hash: "SHA-256",
+    },
+    keyMaterial,
+    { name: "AES-GCM", length: 256 },
+    true,
+    ["encrypt", "decrypt"]
+  );
+}
+
 export async function exportKey(key: CryptoKey): Promise<string> {
   const exported = await window.crypto.subtle.exportKey("raw", key);
   return arrayBufferToBase64(exported);
@@ -77,7 +104,18 @@ export async function decryptData(
   encryptedCombo: string,
   key: CryptoKey
 ): Promise<string> {
-  const [ivStr, encryptedStr] = encryptedCombo.split(":");
+  // Check if we have salt:iv:data or just iv:data
+  const parts = encryptedCombo.split(":");
+
+  let ivStr, encryptedStr;
+
+  if (parts.length === 3) {
+    // Format: salt:iv:ciphertext
+    [, ivStr, encryptedStr] = parts;
+  } else {
+    // Format: iv:ciphertext
+    [ivStr, encryptedStr] = parts;
+  }
 
   if (!ivStr || !encryptedStr) {
     throw new Error("Invalid encrypted data format");
@@ -96,4 +134,16 @@ export async function decryptData(
   );
 
   return new TextDecoder().decode(decrypted);
+}
+
+export function generateSalt(): Uint8Array {
+  return window.crypto.getRandomValues(new Uint8Array(16));
+}
+
+export function bufferToString(buffer: Uint8Array): string {
+  return arrayBufferToBase64(buffer.buffer as ArrayBuffer);
+}
+
+export function stringToBuffer(str: string): Uint8Array {
+  return new Uint8Array(base64ToArrayBuffer(str));
 }

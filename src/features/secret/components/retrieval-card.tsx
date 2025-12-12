@@ -3,6 +3,7 @@
 import { AlertTriangle, Clock, Copy, Eye, Plus, Skull } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { SyntaxViewer } from "./syntax-viewer";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 interface RetrievalCardProps {
   state: "locked" | "revealed" | "destroyed";
@@ -25,6 +26,7 @@ export function RetrievalCard({
   const [countdown, setCountdown] = useState(30);
   const [isDecrypting, setIsDecrypting] = useState(false);
   const [showSyntaxHighlight, setShowSyntaxHighlight] = useState(false);
+  const [isTurnstileValid, setIsTurnstileValid] = useState(false);
 
   // "Matrix" scramble effect
   const decryptEffect = useCallback(async () => {
@@ -65,6 +67,7 @@ export function RetrievalCard({
 
     setShowSyntaxHighlight(true);
   }, [secret]);
+
 
   useEffect(() => {
     if (state === "revealed" && secret) {
@@ -128,9 +131,20 @@ export function RetrievalCard({
           </p>
         </div>
 
+        <Turnstile
+          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+          options={{
+            language: "en",
+            size: "flexible",
+          }}
+          onSuccess={() => setIsTurnstileValid(true)}
+          onError={() => setIsTurnstileValid(false)}
+        />
+
         <button
           onClick={onReveal}
-          className="w-full mt-6 bg-emerald-600 hover:bg-emerald-500 text-white font-medium h-12 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-900/20"
+          disabled={!isTurnstileValid}
+          className="w-full mt-6 bg-emerald-600 hover:bg-emerald-500 text-white font-medium h-12 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-900/20 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Eye className="w-4 h-4" />
           Reveal Secret
