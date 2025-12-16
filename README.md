@@ -18,6 +18,12 @@ Verified with **Bun Workspaces**.
 
 ### Installation
 
+**Method 1: CLI (Global)**
+```bash
+npm install -g vaporkey-cli
+```
+
+**Method 2: Monorepo (Source)**
 Install dependencies for the entire workspace:
 
 ```bash
@@ -55,7 +61,7 @@ bun apps/cli/src/index.ts get <URL>
 ## 📦 Deployment
 
 - **Web**: Deployed to Vercel (Root Directory: `apps/web`).
-- **CLI**: Published to npm (Future Plan).
+- **CLI**: Published to npm ([vaporkey-cli](https://www.npmjs.com/package/vaporkey-cli)).
 
 ---
 **VaporKey** - Secure, Ephemeral, Zero-Knowledge Credential Sharing.
