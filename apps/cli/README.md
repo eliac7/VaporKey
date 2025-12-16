@@ -31,7 +31,7 @@ vaporkey share "My Secret" --password "super-secure-password"
 
 **Options:**
 - `-p, --password <string>`: Encrypt with a password (recipient needs it to decrypt).
-- `-u, --url <string>`: Specify a custom VaporKey instance (default: `https://vaporkey.vercel.app`).
+- `-u, --url <string>`: Specify a custom VaporKey instance (default: `https://vapor-key.vercel.app`).
 
 ### **Retrieve a Secret**
 
@@ -39,10 +39,10 @@ Fetches and decrypts a secret from a VaporKey URL.
 
 ```bash
 # Standard retrieval (Key in URL)
-vaporkey get "https://vaporkey.vercel.app/s/abc12345#key_..."
+vaporkey get "https://vapor-key.vercel.app/s/abc12345#key_..."
 
 # Password Protected
-vaporkey get "https://vaporkey.vercel.app/s/abc12345"
+vaporkey get "https://vapor-key.vercel.app/s/abc12345"
 # (You will be prompted for the password)
 ```
 

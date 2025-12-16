@@ -1,6 +1,6 @@
 {
     "name": "vaporkey-cli",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "A secure, terminal-based tool for sharing self-destructing secrets using VaporKey.",
     "keywords": [
         "vaporkey",
