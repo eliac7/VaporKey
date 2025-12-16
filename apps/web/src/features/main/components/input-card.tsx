@@ -14,7 +14,7 @@ import {
   deriveKeyFromPassword,
   generateSalt,
   bufferToString
-} from "@/lib/crypto";
+} from "@vaporkey/core";
 
 interface InputCardProps {
   onSuccess: (url: string) => void;
