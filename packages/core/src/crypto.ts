@@ -5,7 +5,7 @@ const arrayBufferToBase64 = (buffer: ArrayBuffer): string => {
   for (let i = 0; i < len; i++) {
     binary += String.fromCharCode(bytes[i]);
   }
-  return window
+  return globalThis
     .btoa(binary)
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
@@ -18,7 +18,7 @@ const base64ToArrayBuffer = (base64: string): ArrayBuffer => {
     padded += "=";
   }
 
-  const binaryString = window.atob(padded);
+  const binaryString = globalThis.atob(padded);
   const len = binaryString.length;
   const bytes = new Uint8Array(len);
   for (let i = 0; i < len; i++) {
@@ -28,7 +28,7 @@ const base64ToArrayBuffer = (base64: string): ArrayBuffer => {
 };
 
 export async function generateKey(): Promise<CryptoKey> {
-  return window.crypto.subtle.generateKey(
+  return globalThis.crypto.subtle.generateKey(
     {
       name: "AES-GCM",
       length: 256,
@@ -43,7 +43,7 @@ export async function deriveKeyFromPassword(
   salt: Uint8Array
 ): Promise<CryptoKey> {
   const enc = new TextEncoder();
-  const keyMaterial = await window.crypto.subtle.importKey(
+  const keyMaterial = await globalThis.crypto.subtle.importKey(
     "raw",
     enc.encode(password),
     { name: "PBKDF2" },
@@ -51,7 +51,7 @@ export async function deriveKeyFromPassword(
     ["deriveKey"]
   );
 
-  return window.crypto.subtle.deriveKey(
+  return globalThis.crypto.subtle.deriveKey(
     {
       name: "PBKDF2",
       salt: new Uint8Array(salt).buffer as ArrayBuffer,
@@ -66,13 +66,13 @@ export async function deriveKeyFromPassword(
 }
 
 export async function exportKey(key: CryptoKey): Promise<string> {
-  const exported = await window.crypto.subtle.exportKey("raw", key);
+  const exported = await globalThis.crypto.subtle.exportKey("raw", key);
   return arrayBufferToBase64(exported);
 }
 
 export async function importKey(keyStr: string): Promise<CryptoKey> {
   const keyBuffer = base64ToArrayBuffer(keyStr);
-  return window.crypto.subtle.importKey("raw", keyBuffer, "AES-GCM", true, [
+  return globalThis.crypto.subtle.importKey("raw", keyBuffer, "AES-GCM", true, [
     "encrypt",
     "decrypt",
   ]);
@@ -83,9 +83,9 @@ export async function encryptData(
   key: CryptoKey
 ): Promise<string> {
   const encoded = new TextEncoder().encode(data);
-  const iv = window.crypto.getRandomValues(new Uint8Array(12));
+  const iv = globalThis.crypto.getRandomValues(new Uint8Array(12));
 
-  const encrypted = await window.crypto.subtle.encrypt(
+  const encrypted = await globalThis.crypto.subtle.encrypt(
     {
       name: "AES-GCM",
       iv: iv,
@@ -124,7 +124,7 @@ export async function decryptData(
   const iv = base64ToArrayBuffer(ivStr);
   const encrypted = base64ToArrayBuffer(encryptedStr);
 
-  const decrypted = await window.crypto.subtle.decrypt(
+  const decrypted = await globalThis.crypto.subtle.decrypt(
     {
       name: "AES-GCM",
       iv: iv,
@@ -137,7 +137,7 @@ export async function decryptData(
 }
 
 export function generateSalt(): Uint8Array {
-  return window.crypto.getRandomValues(new Uint8Array(16));
+  return globalThis.crypto.getRandomValues(new Uint8Array(16));
 }
 
 export function bufferToString(buffer: Uint8Array): string {

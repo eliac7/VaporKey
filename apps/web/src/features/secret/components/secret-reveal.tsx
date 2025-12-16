@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState, useRef } from "react";
 import { client } from "@/lib/client";
 import { RetrievalCard } from "./retrieval-card";
-import { decryptData, importKey, deriveKeyFromPassword, stringToBuffer } from "@/lib/crypto";
+import { decryptData, importKey, deriveKeyFromPassword, stringToBuffer } from "@vaporkey/core";
 import { ArrowRight, Loader2, Link2Off } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";

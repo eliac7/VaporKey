@@ -1,0 +1,23 @@
+{
+    "name": "@vaporkey/cli",
+    "version": "0.1.0",
+    "private": true,
+    "bin": {
+        "vaporkey": "./bin/vaporkey.js"
+    },
+    "scripts": {
+        "dev": "bun run src/index.ts",
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@vaporkey/core": "workspace:*",
+        "cac": "^6.7.14",
+        "chalk": "^5.3.0",
+        "ora": "^8.0.1",
+        "prompts": "^2.4.2"
+    },
+    "devDependencies": {
+        "@types/prompts": "^2.4.9",
+        "typescript": "^5"
+    }
+}
