@@ -1,5 +1,5 @@
 
-export const API_BASE_URL = process.env.VAPORKEY_API_URL || "https://vaporkey.vercel.app";
+export const API_BASE_URL = process.env.VAPORKEY_API_URL || "https://vapor-key.vercel.app";
 
 export async function storeSecret(encryptedData: string, baseUrl: string = API_BASE_URL) {
     const response = await fetch(`${baseUrl}/api/secret/create`, {
