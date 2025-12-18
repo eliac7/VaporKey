@@ -1,7 +1,7 @@
 {
-  "name": "@vaporkey/web",
-  "version": "0.1.0",
+  "name": "vaporkey-web",
   "private": true,
+  "version": "0.1.0",
   "description": "A secure, self-destructing credential sharing utility that enforces single-view access and auto-deletion, built with Next.js, ElysiaJS, and Redis TTL.",
   "author": {
     "name": "Ilias Thalassochoritis",
